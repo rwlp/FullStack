@@ -59,6 +59,7 @@ model User {
   password     String
   profilePhoto String
   levelProfile String
+  totalSpend   Float
   orders       Order[]
   favorites    Favorite[]
   createdAt    DateTime   @default(now())
@@ -97,7 +98,7 @@ model OrderItem {
 model Favorite {
   id        Int    @id @default(autoincrement())
   userId    String
-  productId Int[]
+  productId Int
 
   user    User    @relation(fields: [userId], references: [id])
   product Product @relation(fields: [productId], references: [id])
