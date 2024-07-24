@@ -16,7 +16,7 @@ Is an e-commerce with frontend and backend.
 
 ### Run frontend in your localhost: 
 
-1. `git clone https://github.com/br-fs-feb24-BinaryBosses/react_phone-catalog.git`
+1. `git clone https://github.com/rwlp/FullStack.git`
 2. `cd frontend`
 3. `npm install`
 4. `npm start`
