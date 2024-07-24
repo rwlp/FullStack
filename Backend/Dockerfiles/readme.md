@@ -1,1 +1,0 @@
-Build and run images from Dockerfiles in your local enviroment!
