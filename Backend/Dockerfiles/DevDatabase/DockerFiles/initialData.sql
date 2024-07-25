@@ -17,20 +17,19 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Name: public; Type: SCHEMA; Schema: -; Owner: dev
+-- Name: LevelProfile; Type: TYPE; Schema: public; Owner: dev
 --
 
--- *not* creating schema, since initdb creates it
+CREATE TYPE public."LevelProfile" AS ENUM (
+    'Arquimedes',
+    'Pitagoras',
+    'Newton',
+    'Poincare',
+    'Gauss'
+);
 
 
-ALTER SCHEMA public OWNER TO dev;
-
---
--- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: dev
---
-
-COMMENT ON SCHEMA public IS '';
-
+ALTER TYPE public."LevelProfile" OWNER TO dev;
 
 --
 -- Name: OrderStatus; Type: TYPE; Schema: public; Owner: dev
@@ -230,7 +229,7 @@ CREATE TABLE public.users (
     email character varying(100) NOT NULL,
     password text NOT NULL,
     "profilePhoto" text NOT NULL,
-    "levelProfile" text NOT NULL,
+    "levelProfile" public."LevelProfile" NOT NULL,
     "totalSpend" double precision NOT NULL,
     "createdAt" timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
     "updatedAt" timestamp(3) without time zone NOT NULL
@@ -265,7 +264,7 @@ ALTER TABLE ONLY public.products ALTER COLUMN id SET DEFAULT nextval('public.pro
 --
 
 COPY public._prisma_migrations (id, checksum, finished_at, migration_name, logs, rolled_back_at, started_at, applied_steps_count) FROM stdin;
-25a6e732-0dc4-448d-b4ac-efbfa75132b9	a030e72ab720bbdbca6b417cb743e003cd0d608d4f511840f30352f1c964ba8f	2024-07-23 17:52:05.122732+00	20240723175204_initial_migration	\N	\N	2024-07-23 17:52:04.165677+00	1
+d981a14b-6bcb-46ac-8309-537111f68435	8b5245ea8bc627f41a99bf4a4d6be8373614cabd1ecc8d61d80c700705333020	2024-07-25 18:40:47.170118+00	20240725181536_migration_0	\N	\N	2024-07-25 18:40:46.203585+00	1
 \.
 
 
@@ -1099,6 +1098,7 @@ COPY public.products (id, "codeName", category, name, "capacityAvailable", capac
 --
 
 COPY public.users (id, name, email, password, "profilePhoto", "levelProfile", "totalSpend", "createdAt", "updatedAt") FROM stdin;
+4d6b84e1-4895-413d-a42e-699df230bc24	First User In Data Base	first@gmail.com	$2b$10$UAj5.7gMo2y5gA7SsbHxX.XFy8hcq3AR26vvZy1cq5VRvf6cX4gZG	none	Arquimedes	0	2024-07-25 18:43:10.671	2024-07-25 18:43:10.671
 \.
 
 
@@ -1232,13 +1232,6 @@ ALTER TABLE ONLY public.order_items
 
 ALTER TABLE ONLY public.orders
     ADD CONSTRAINT "orders_userId_fkey" FOREIGN KEY ("userId") REFERENCES public.users(id) ON UPDATE CASCADE ON DELETE RESTRICT;
-
-
---
--- Name: SCHEMA public; Type: ACL; Schema: -; Owner: dev
---
-
-REVOKE USAGE ON SCHEMA public FROM PUBLIC;
 
 
 --

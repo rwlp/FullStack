@@ -4,7 +4,7 @@ const client = new PrismaClient()
 
 async function test() {
   try {
-    const allTables = await client.product.findMany();
+    const allTables = await client.user.findMany();
 
   console.log('Connection Success: ', allTables);
   } catch (error) {

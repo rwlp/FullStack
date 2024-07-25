@@ -1,11 +1,25 @@
-export class CreateUserDTO {
-    name: string;
-    email: string;
-    password: string;
+import { Expose } from "class-transformer";
+import { IsEmail, IsString, IsStrongPassword, Length } from "class-validator";
 
-    constructor(data: {name: string, email: string, password: string}) {
-        this.name = data.name;
-        this.email = data.email;
-        this.password = data.password;
-    }
+export class CreateUserDTO {
+    @IsString()
+    @Length(1, 200)
+    name: string;
+
+    @IsEmail()
+    email: string;
+
+    @IsStrongPassword()
+    password: string;
+}
+
+export class UserDTO {
+    @Expose()
+    name: string;
+
+    @Expose()
+    email: string;
+
+    @Expose()
+    profilePhoto: string;
 }

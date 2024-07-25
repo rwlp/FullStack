@@ -3,6 +3,6 @@ import usersController from "./controller.ts";
 
 const usersRouter = Router();
 
-usersRouter.use('createUser', usersController.createUser)
+usersRouter.post('/createUser', usersController.createUser)
 
 export default usersRouter;

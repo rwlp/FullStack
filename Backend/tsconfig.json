@@ -7,6 +7,10 @@
       "skipLibCheck": true,
       "allowImportingTsExtensions": true,
       "forceConsistentCasingInFileNames": true,
+      "strictPropertyInitialization": false,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "noEmit": true,
       "outDir": "./dist"
     },
     "include": ["src/**/*"],

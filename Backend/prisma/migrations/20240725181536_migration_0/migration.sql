@@ -1,6 +1,9 @@
 -- CreateEnum
 CREATE TYPE "OrderStatus" AS ENUM ('active', 'closed');
 
+-- CreateEnum
+CREATE TYPE "LevelProfile" AS ENUM ('Arquimedes', 'Pitagoras', 'Newton', 'Poincare', 'Gauss');
+
 -- CreateTable
 CREATE TABLE "products" (
     "id" SERIAL NOT NULL,
@@ -45,7 +48,7 @@ CREATE TABLE "users" (
     "email" VARCHAR(100) NOT NULL,
     "password" TEXT NOT NULL,
     "profilePhoto" TEXT NOT NULL,
-    "levelProfile" TEXT NOT NULL,
+    "levelProfile" "LevelProfile" NOT NULL,
     "totalSpend" DOUBLE PRECISION NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
