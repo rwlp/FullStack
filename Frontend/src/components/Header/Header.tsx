@@ -80,16 +80,16 @@ function Header(): React.ReactNode {
             </a>
           </li>
 
-          <li className="nav-right__item nav-right__item--login">
-            {/* change this to avatar photo */}
+          {/* <li className="nav-right__item nav-right__item--login">
+            {change this to avatar photo }
             <a
               className="nav-right__link"
               href="/"
               aria-label="Open UserAccount Options"
             >
-              <LogoutIcon fill={colorIcons} />
+              <LogoutIcon fill={colorIcons} /> 
             </a>
-          </li>
+          </li>*/}
         </ul>
       </div>
     </StyledHeader>

@@ -22,14 +22,18 @@ export const GlobalStyles = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100vw;
+    height: 100vh;
     font-family: Mont;
     background-color: ${({ theme }) => theme.primary};
-    display: flex;
     scroll-behavior: smooth;
+  }
+
+  #root {
+    padding-inline: 30px;
+    display: flex;
+    justify-content: center;
+    position: relative;
   }
 
   button {
