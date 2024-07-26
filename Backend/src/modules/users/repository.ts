@@ -1,6 +1,6 @@
 import { plainToInstance } from "class-transformer";
 import prisma from "../../common/config/prismaClient.ts";
-import { CreateUserDTO, UserDTO } from "./dto.ts";
+import { CreateUserDTO, UserDTO } from "./DTO/RequestDTO.ts";
 
 class UsersRepository {
     async createUser(createUserDTO: CreateUserDTO): Promise<UserDTO> {
@@ -13,7 +13,7 @@ class UsersRepository {
             }
         });
 
-        return plainToInstance(UserDTO, createdUser);
+        return plainToInstance(UserDTO, createdUser, {excludeExtraneousValues: true});
     }
 }
 

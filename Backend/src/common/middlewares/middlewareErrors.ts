@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import AppError from "../AppError";
+import AppError from "../utils/AppError";
 import { logError } from "../utils/methods";
 
 export function middlewareErrors(err: Error, _req: Request, res: Response, _next: NextFunction) {

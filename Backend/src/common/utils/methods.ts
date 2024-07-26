@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs';
-import AppError from '../AppError';
+import AppError from './AppError';
 import { Response } from 'express';
 import { ResponseDTO } from './dto';
 
@@ -15,6 +15,6 @@ export function logError(error: AppError | Error) {
   });
 }
 
-export function responseWrapper(res: Response, message: string, status: number, data: unknown ) {
-  res.status(status).json(new ResponseDTO(message, status, data));
+export function responseWrapper(res: Response, message: string, status: number, dataType: string, data: unknown ) {
+  res.status(status).json(new ResponseDTO(message, status, dataType, data));
 };
