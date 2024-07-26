@@ -18,7 +18,7 @@ function Footer(props: FooterProps): React.ReactNode {
       <a className="footer__home-link" href="/" aria-label="Go to Home Page">
         <img
           className="footer__logo"
-          src={`${BASE_URL_CDN}/images/logo.png`}
+          src={`${BASE_URL_CDN}/img/logo.png`}
           alt="Logo"
         />
       </a>

@@ -15,7 +15,7 @@ function Header(): React.ReactNode {
       <a className="header_home-link" href="/" aria-label="Go to Home Page">
         <img
           className="header__logo"
-          src={`${BASE_URL_CDN}/images/logo.png`}
+          src={`${BASE_URL_CDN}/img/logo.png`}
           alt="Logo"
         />
       </a>
