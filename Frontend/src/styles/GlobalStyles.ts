@@ -31,9 +31,18 @@ export const GlobalStyles = createGlobalStyle`
 
   #root {
     padding-inline: 30px;
+    padding-top: 64px;
+    padding-bottom: 96px;
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
     position: relative;
+
+    @media (max-width: 640px) {
+      padding-top: 48px;
+      padding-bottom: 320px;
+
+    }
   }
 
   button {
