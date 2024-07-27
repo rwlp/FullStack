@@ -6,6 +6,17 @@ This is importants notes about backend projetc, based on [MateAcademy Brasil](ht
 ## Hi from the author: 
 - Hi! I hope you apreciate this!
 
+## Design Patterns
+ - We use some techniques to improve the security, readability and scalability of the system: 
+  - DTO(Data Transfer Objects): All data in request body are verified through DTO. The constructor of this classes validade data.
+  - We centralized error handling and register in a log file (error.log) all suspect behaviors
+  - Modularization of services
+  - Separation of concers:
+    - Repository for database operations
+    - Service for bussines logic
+    - Controller Handle HTTP Request and Response
+    - Router to group related routes
+
 ## Run backend in yor localhost
 
 1. `cd <repositorio>/Backend`

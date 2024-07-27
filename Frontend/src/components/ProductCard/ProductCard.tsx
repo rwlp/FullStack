@@ -25,8 +25,8 @@ function ProductCard({img, name, fullPrice, discountPrice, info}: ProductCardPro
       <span className='product__name'>{name}</span>
 
       <div className='product__price-container'>
-        <span className='product__full-price'>{fullPrice}</span>
-        <span className='product__discount-price'>{discountPrice}</span>
+        <h3 className='product__full-price'>${fullPrice}</h3>
+        <span className='product__discount-price'>${discountPrice}</span>
       </div>
 
       <span className='product__separator-line' />
@@ -36,14 +36,14 @@ function ProductCard({img, name, fullPrice, discountPrice, info}: ProductCardPro
           return (
             <div className='info'>
               <span className='info__title'>{title}</span>
-              <span className='info_description'>{description}</span>
+              <span className='info__description'>{description}</span>
             </div>
           );
         })}
       </div>
 
       <div className='product__butonns-container'>
-        <Button text='Add to Cart' />
+        <Button text='Add to Cart' isSelected={false}/>
         <ButtonFavorite />
       </div>
     </StyledProductCard>
