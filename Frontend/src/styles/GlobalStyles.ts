@@ -45,6 +45,7 @@ export const GlobalStyles = createGlobalStyle`
     margin-top: 64px; 
     @media (max-width: 640px) {
       margin-top: 48px;
+      padding-inline: 16px;
     }
   }
 

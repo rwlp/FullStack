@@ -7,6 +7,8 @@ interface Prop {
 
 const StyledSelectorBox = styled.div<Prop>`
   width: ${({$size}) => $size};
+  max-width: 176px;
+  min-width: 136px;
   height: 40px;
 
   .selector__container {
@@ -37,7 +39,7 @@ const StyledSelectorBox = styled.div<Prop>`
     height: 100px;
     display: flex;
     flex-direction: column;
-    border: 1px solid #3B3E4A
+    border: 1px solid #3B3E4A;
   }
 
   .selector__option {

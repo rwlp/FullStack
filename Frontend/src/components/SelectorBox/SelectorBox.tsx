@@ -9,7 +9,7 @@ interface SelectorBoxProps {
 
 function SelectorBox({ type }: SelectorBoxProps): React.ReactNode {
   const selectorRef = useRef<HTMLDivElement>(null);
-  const width = type === 'sort-by' ? '176px' : '128px';
+  const width = type === 'sort-by' ? '100%' : '136px';
   const options = type === 'sort-by' 
   ? [
     'Newest',
