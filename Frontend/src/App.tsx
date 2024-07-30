@@ -7,6 +7,7 @@ import darkTheme from "./styles/themes/darkTheme.ts";
 import Footer from "./components/Footer/Footer.tsx";
 import Header from "./components/Header/Header.tsx";
 import Catalog from "./pages/Catalog/Catalog.tsx";
+import Home from "./pages/Home/Home.tsx";
 
 function App(): React.ReactNode {
   const [theme] = useState("light");
@@ -18,7 +19,8 @@ function App(): React.ReactNode {
         
         <main>  
         <Routes>
-          <Route path="/" element={<Catalog />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/catalog/phones" element={<Catalog />} />
         </Routes>
         </main>
         

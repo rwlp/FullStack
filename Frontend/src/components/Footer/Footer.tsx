@@ -26,7 +26,7 @@ function Footer(props: FooterProps): React.ReactNode {
       <nav className='footer__nav nav'>
         <ul className='nav__list'>
           <li className='nav__item'>
-            <a href="#" className="nav__link">
+            <a href="https://github.com/rwlp/FullStack" target="blank" className="nav__link">
               Git Hub
             </a>
           </li>

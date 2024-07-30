@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { NavLink, useNavigate } from 'react-router-dom';
 import { ThemeContext } from "styled-components";
 import StyledHeader from "./StyledHeader.ts";
 import { BASE_URL_CDN } from "../../utils/constants.ts";
@@ -12,38 +13,39 @@ function Header(): React.ReactNode {
 
   return (
     <StyledHeader className="header">
-      <a className="header_home-link" href="/" aria-label="Go to Home Page">
+      
+      <NavLink className="header_home-link" to="/" aria-label="Go to Home Page">
         <img
           className="header__logo"
           src={`${BASE_URL_CDN}/img/logo.png`}
           alt="Logo"
         />
-      </a>
+      </NavLink>
 
       <nav className="header__center-nav nav-center">
         <ul className="nav-center__list">
           <li className="nav-center__item">
-            <a href="/" className="nav-center__link">
+            <NavLink to="/" className={({isActive}) => isActive ? "nav-center__link--isActive nav-center__link": "nav-center__link"} >
               Home
-            </a>
+            </NavLink>
           </li>
 
           <li className="nav-center__item">
-            <a href="/" className="nav-center__link">
+            <NavLink to="catalog/phones" className={({isActive}) => isActive ? "nav-center__link--isActive nav-center__link": "nav-center__link"} >
               Phones
-            </a>
+            </NavLink>
           </li>
 
           <li className="nav-center__item">
-            <a href="/" className="nav-center__link nav-center__link--isActive">
+            <NavLink to="catalog/tablets" className={({isActive}) => isActive ? "nav-center__link--isActive nav-center__link": "nav-center__link"}>
               Tablets
-            </a>
+            </NavLink>
           </li>
 
           <li className="nav-center__item">
-            <a href="/" className="nav-center__link">
+            <NavLink to="catalog/accessories" className={({isActive}) => isActive ? "nav-center__link--isActive nav-center__link": "nav-center__link"}>
               Accessories
-            </a>
+            </NavLink>
           </li>
         </ul>
       </nav>
