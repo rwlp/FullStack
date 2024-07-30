@@ -6,8 +6,7 @@ import lightTheme from "./styles/themes/lightTheme.ts";
 import darkTheme from "./styles/themes/darkTheme.ts";
 import Footer from "./components/Footer/Footer.tsx";
 import Header from "./components/Header/Header.tsx";
-import Home from "./pages/Home/Home.tsx";
-import ProductCard from "./components/ProductCard/ProductCard.tsx";
+import Catalog from "./pages/Catalog/Catalog.tsx";
 
 const product =  {
   id: 3,
@@ -71,10 +70,9 @@ function App(): React.ReactNode {
       <>
         <Header />
         
-
-        <main>
+        <main>  
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Catalog />} />
         </Routes>
         </main>
         

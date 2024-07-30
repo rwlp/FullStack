@@ -4,15 +4,16 @@ import StyledButtonNumber from "./StyledButtonNumber.ts";
 interface ButtonNumberProps {
   value: number;
   isSelected: boolean;
-  // callback: () => void;
+  onClick?: () => void;
 }
 
 function ButtonNumber({
   value,
   isSelected = false,
+  onClick,
 }: ButtonNumberProps): React.ReactNode {
   return (
-    <StyledButtonNumber className="button-number" $isSelected={isSelected}>
+    <StyledButtonNumber className={`button-number ${isSelected ? '--isSelected': ''}`} onClick={onClick} >
       <div className="button-number__value">{value}</div>
     </StyledButtonNumber>
   );

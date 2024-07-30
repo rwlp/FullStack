@@ -1,25 +1,74 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import StyledSelectorBox from './StyledSelectorBox.ts';
+import IconArrowDonw from '../../assets/icons/Arrow-down.svg'
 
 
 interface SelectorBoxProps {
-  // Define here props of this Component
+  type: 'sort-by' | 'items-qtd';
 }
 
-function SelectorBox(props: SelectorBoxProps): React.ReactNode {
-  const {
-    // someProps
-  } = props;
+function SelectorBox({ type }: SelectorBoxProps): React.ReactNode {
+  const selectorRef = useRef<HTMLDivElement>(null);
+  const width = type === 'sort-by' ? '176px' : '128px';
+  const options = type === 'sort-by' 
+  ? [
+    'Newest',
+    'Cheapest',
+    'Discount',
+  ]
+  : [
+    '5',
+    '10',
+    '20',
+  ]
+
+  const [currentOption, setCurrentOption] = useState(options[0]);
+
+
+  const [isDown, setIsDown] = useState(false);
+
+  const handleDownClick = () => {
+    setIsDown(!isDown);
+  }
+
+  const changeOption = (option: string) => {
+    return () => 
+      {
+        setCurrentOption(option);
+        setIsDown(false);
+      }
+  }
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (selectorRef.current && !selectorRef.current.contains(event.target as Node)) {
+      setIsDown(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
-    <StyledSelectorBox className='selector' >
-      <input className='selector__value' readOnly={true} type='text'></input>
-      <div className='selector__container-options'>
-        <button className='selector__option'>Option 1</button>
-        <button className='selector__option'>Option 2</button>
-        <button className='selector__option'>Option 3</button>
-        <button className='selector__option'>Option 4</button>
+    <StyledSelectorBox className='selector' ref={selectorRef}$size={width}>
+      <div className='selector__container'>
+        <button className='selector__button' type='button' onClick={handleDownClick}>
+          {currentOption}
+          <IconArrowDonw  />
+        </button>
       </div>
+
+      {isDown && 
+      <div className='selector__options-container'>
+        {options.map(option => {
+
+          return (<button onClick={changeOption(option)}className='selector__option'>{option}</button>);
+        })};
+      </div>}
     </StyledSelectorBox>
   );
 }
