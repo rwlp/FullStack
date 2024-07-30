@@ -26,18 +26,18 @@ interface ButtonArrowPointerProps {
 function ButtonArrowPointer({
   direction,
   isDisabled = true,
-  svgProps = {},
+  callback,
 }: ButtonArrowPointerProps): React.ReactNode {
-  const { width, height } = svgProps;
   const colors = useContext(ThemeContext)!;
   const Icon = iconsDirections[direction];
   return (
     <StyledButtonArrowPointer
       className={`button-arrow ${isDisabled ? "button-arrow--disable" : ""}`}
+      onClick={callback}
     >
       <Icon
-        width={width}
-        height={height}
+        width={16}
+        height={16}
         fill={isDisabled ? colors.icons : colors.gray}
       />
     </StyledButtonArrowPointer>

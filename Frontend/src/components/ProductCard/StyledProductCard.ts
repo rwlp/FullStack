@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { letterStyleBodyTextDesktoAndTable, letterStyleH3DesktoAndTable, letterStyleSmallTextDesktoAndTable } from '../../styles/typography/typography';
+import { skeleton } from '../../styles/templates-css/skeleton';
 
 const StyledProductCard = styled.div`
   width: 272px;
@@ -15,10 +16,13 @@ const StyledProductCard = styled.div`
   .product__link {
     padding: 0;
     margin: 0;
+    min-height: 196px;
+    min-width: 208px;
   }
 
   .product__img {
     height: 196px;
+    width: 208px;
   }
 
   .product__name {
@@ -29,6 +33,7 @@ const StyledProductCard = styled.div`
   }
 
   .product__price-container {
+    height: 51px;
     display: flex;
     gap: 0 8px;
   }
@@ -57,7 +62,7 @@ const StyledProductCard = styled.div`
       width: 100%;
       height: 1px;
       left: 0;
-      bottom: 50%;
+      top: 35%;
       background-color: ${({theme}) => theme.secondary};
       mix-blend-mode: difference;
     }
@@ -68,6 +73,8 @@ const StyledProductCard = styled.div`
   }
 
   .info-container {
+    width: 100%;
+    height: 77px;
     padding-block: 8px;
     display: flex;
     flex-direction: column;
@@ -92,10 +99,17 @@ const StyledProductCard = styled.div`
     color:  ${({theme}) => theme.gray};
   }
 
-  .product__butonns-container {
+  .buttons-wrapper {
     display: flex;
     gap: 0 8px;
   }
+
+  .product__buttons-container {
+    height: 40px;
+    width: 100%;
+  }
+
+  ${skeleton};
 `;
 
 export default StyledProductCard;

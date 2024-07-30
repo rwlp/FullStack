@@ -9,9 +9,7 @@ const StyledFooter = styled.footer`
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  position: fixed;
-  bottom: 0;
+  justify-content: space-between; 
 
   @media (max-width:640px) {
     height: 320px;

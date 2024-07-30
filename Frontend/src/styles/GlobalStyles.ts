@@ -26,20 +26,25 @@ export const GlobalStyles = createGlobalStyle`
     background-color: ${({ theme }) => theme.primary};
     scroll-behavior: smooth;
   }
-  
+
   #root {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  main {
+    width: 100%;
     padding-inline: 30px;
-    padding-top: 64px;
-    padding-bottom: 96px;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
     position: relative;
 
+    margin-top: 64px; 
     @media (max-width: 640px) {
-      padding-top: 48px;
-      padding-bottom: 320px;
-
+      margin-top: 48px;
     }
   }
 

@@ -17,6 +17,8 @@ const StyledHeader = styled.header`
   gap: 0 24px;
   box-shadow: 0px 1px 0px 0px ${({ theme }) => theme.hoverAndBG};
   background-color: ${({ theme }) => theme.primary};
+  z-index: 99;
+
 
   @media (max-width: 640px) {
     --height: 48px;
