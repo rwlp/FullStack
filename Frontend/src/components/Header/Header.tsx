@@ -5,7 +5,6 @@ import StyledHeader from "./StyledHeader.ts";
 import { BASE_URL_CDN } from "../../utils/constants.ts";
 import HeartIcon from "../../assets/icons/HeartLike-empty.svg";
 import BagIcon from "../../assets/icons/Empty-cart.svg";
-import LogoutIcon from "../../assets/icons/LoginDoor.svg";
 import MenuIcon from "../../assets/icons/Menu.svg";
 
 function Header(): React.ReactNode {
@@ -31,7 +30,7 @@ function Header(): React.ReactNode {
           </li>
 
           <li className="nav-center__item">
-            <NavLink to="catalog/phones" className={({isActive}) => isActive ? "nav-center__link--isActive nav-center__link": "nav-center__link"} >
+            <NavLink to="catalog/phones?sort=newest&itemsPerPage=4&page=1" className={({isActive}) => isActive ? "nav-center__link--isActive nav-center__link": "nav-center__link"} >
               Phones
             </NavLink>
           </li>

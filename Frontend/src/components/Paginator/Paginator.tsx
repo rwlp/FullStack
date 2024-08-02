@@ -1,84 +1,65 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useState } from 'react';
 import StyledPaginator from './StyledPaginator.ts';
 import ButtonArrowPointer from '../ButtonArrowPointer/ButtonArrowPointer.tsx';
 import ButtonNumber from '../ButtonNumber/ButtonNumber.tsx';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 interface PaginatorProps {
-  // Define here props of this Component
+  limit: number
 }
 
-interface ActionReducer {
-  type: 'back' | 'forward' | 'set';
-  payload?: number;
-}
+function Paginator({limit}: PaginatorProps): React.ReactNode {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const searchParams = new URLSearchParams(useLocation().search);
+  const pageNumber = parseInt(searchParams.get('page')!);
 
-interface StateReducer {
-  indexes: number[];
-  activeIndex: number;
-  totalItems: number;
-  lastIndex?: number;
-}
-
-function reducer(state: StateReducer, action: ActionReducer): StateReducer  {
-  const reducers: {[key: string]: () => StateReducer} = {
-    'forward': () => {
-      if (state.activeIndex === 3) {
-        return {
-          ...state,
-          indexes: state.indexes.map(e => e + 1),
-        }
-      } else {
-        return {
-          ...state,
-          activeIndex: state.activeIndex + 1,
-        }
-      }
-    },
-
-    'back': () => {
-      if (state.activeIndex === 0) {
-        return {
-          ...state,
-          indexes: state.indexes.map(e => e - 1),
-        }
-      }
-      return {
-        ...state,
-        activeIndex: state.activeIndex - 1,
-      }
-    },
-
-    'set': () => {
-      return {
-        ...state,
-        activeIndex: action.payload!,
-      }
+  const [indexes, setIndexes] = useState(() => {
+    let initIndexes = [1, 2, 3, 4];
+    if (pageNumber >= 5) {
+      initIndexes = initIndexes.map(e => e + pageNumber - 4);
     }
-  }
+    return initIndexes;
+  });
 
-  return reducers[action.type]();
-}
+  const [activeIndex, setActiveIndex] = useState(() => indexes.findIndex(e => e === pageNumber));
 
-const initialState: StateReducer = {
-  indexes: [1, 2, 3, 4],
-  activeIndex: 3,
-  totalItems: 30,
-  lastIndex: 6,
-};
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    setIndexes(() => {
+      let initIndexes = [1, 2, 3, 4];
+      if (parseInt(searchParams.get('page')!) >= 5) {
+        initIndexes = initIndexes.map(e => e + pageNumber - 4);
+      }
+      return initIndexes;
+    });
+  }, [location]);
 
-function Paginator({}: PaginatorProps): React.ReactNode {
-  const [state, dispatch] = useReducer(reducer, initialState);  
-
+  useEffect(() => {
+    setActiveIndex(() => indexes.findIndex(e => e === parseInt(searchParams.get('page')!)));
+  }, [indexes]);
+  
   return (
     <StyledPaginator className='page-indicator' >
-        <ButtonArrowPointer direction='left' isDisabled={state.activeIndex === 0 && state.indexes[0] === 1} onClick={() => dispatch({type: 'back'})} />
-        {state.indexes.map((pageNumber, index) => {
+        <ButtonArrowPointer direction='left' isDisabled={activeIndex === 0 && indexes[0] === 1} onClick={() => {
+          searchParams.set('page', String(pageNumber - 1));
+          navigate(`${location.pathname}?${searchParams.toString()}`);
+            
+        }
+        } />
+        {indexes.map((page, index) => {
           return (
-            <ButtonNumber value={pageNumber} isSelected={index === (state.activeIndex)} onClick={() => dispatch({type: 'set', payload: index})} />
+            <ButtonNumber value={page} isSelected={index === (activeIndex)} onClick={() => {
+              searchParams.set('page', String(indexes[index]));
+              navigate(`${location.pathname}?${searchParams.toString()}`);
+            }}/>
           );
         })}
-        <ButtonArrowPointer direction='right' isDisabled={state.activeIndex === 3 && state.totalItems === state.indexes[3]} onClick={() => dispatch({type: 'forward'})}/>
+        <ButtonArrowPointer direction='right' isDisabled={indexes[activeIndex] === limit} onClick={() => {
+          searchParams.set('page', String(pageNumber + 1));
+          navigate(`${location.pathname}?${searchParams.toString()}`);
+        }} />
       </StyledPaginator>
   );
 }

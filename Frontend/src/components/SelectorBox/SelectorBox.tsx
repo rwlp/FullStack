@@ -1,13 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
 import StyledSelectorBox from './StyledSelectorBox.ts';
 import IconArrowDonw from '../../assets/icons/Arrow-down.svg'
+import { useLocation, useNavigate } from 'react-router-dom';
+import { pascalCase } from '../../utils/methodos.ts';
 
 
 interface SelectorBoxProps {
   type: 'sort-by' | 'items-qtd';
 }
 
-function SelectorBox({ type }: SelectorBoxProps): React.ReactNode {
+function SelectorBox({ type}: SelectorBoxProps): React.ReactNode {
+  const navigate = useNavigate();
+  const location = useLocation();
   const selectorRef = useRef<HTMLDivElement>(null);
   const width = type === 'sort-by' ? '100%' : '136px';
   const options = type === 'sort-by' 
@@ -17,14 +21,11 @@ function SelectorBox({ type }: SelectorBoxProps): React.ReactNode {
     'Discount',
   ]
   : [
-    '5',
-    '10',
-    '20',
-  ]
+    '4',
+    '8',
+  ];
 
-  const [currentOption, setCurrentOption] = useState(options[0]);
-
-
+  const searchParams = new URLSearchParams(location.search);
   const [isDown, setIsDown] = useState(false);
 
   const handleDownClick = () => {
@@ -34,8 +35,9 @@ function SelectorBox({ type }: SelectorBoxProps): React.ReactNode {
   const changeOption = (option: string) => {
     return () => 
       {
-        setCurrentOption(option);
         setIsDown(false);
+        type === 'sort-by' ? searchParams.set('sort', option.toLowerCase()) : searchParams.set('itemsPerPage', option.toLowerCase());
+        navigate(`${location.pathname}?${searchParams}`);
       }
   }
 
@@ -57,7 +59,7 @@ function SelectorBox({ type }: SelectorBoxProps): React.ReactNode {
     <StyledSelectorBox className='selector' ref={selectorRef}$size={width}>
       <div className='selector__container'>
         <button className='selector__button' type='button' onClick={handleDownClick}>
-          {currentOption}
+          {type === 'sort-by' ? pascalCase(searchParams.get('sort')!) : searchParams.get('itemsPerPage') }
           <IconArrowDonw  />
         </button>
       </div>
