@@ -3,7 +3,7 @@ import StyledHome from './StyledHome.ts';
 import IconLeft  from '../../assets/icons/Arrow-left.svg'
 import IconRight  from '../../assets/icons/Arrow-right.svg'
 import ProductsList from '../../components/ProductsList/ProductsList.tsx';
-import { BASE_URL_CDN } from '../../utils/constants.ts';
+import { BASE_URL_CDN } from '../../common/constants.ts';
 
 
 function Home(): React.ReactNode {

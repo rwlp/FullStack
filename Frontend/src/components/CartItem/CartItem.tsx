@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import StyledCartItem from './StyledCartItem.ts';
 import DeleteIcon from '../../assets/icons/Close.svg';
-import { BASE_URL_CDN } from '../../utils/constants.ts';
+import { BASE_URL_CDN } from '../../common/constants.ts';
 import IconDesc from '../../assets/icons/Minus.svg';
 import IconAsc from '../../assets/icons/Plus.svg';
 import { ThemeContext } from 'styled-components';

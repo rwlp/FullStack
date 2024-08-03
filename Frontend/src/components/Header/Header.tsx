@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
 import { ThemeContext } from "styled-components";
 import StyledHeader from "./StyledHeader.ts";
-import { BASE_URL_CDN } from "../../utils/constants.ts";
+import { BASE_URL_CDN } from "../../common/constants.ts";
 import HeartIcon from "../../assets/icons/HeartLike-empty.svg";
 import BagIcon from "../../assets/icons/Empty-cart.svg";
 import MenuIcon from "../../assets/icons/Menu.svg";
@@ -36,13 +36,13 @@ function Header(): React.ReactNode {
           </li>
 
           <li className="nav-center__item">
-            <NavLink to="catalog/tablets" className={({isActive}) => isActive ? "nav-center__link--isActive nav-center__link": "nav-center__link"}>
+            <NavLink to="catalog/tablets?sort=newest&itemsPerPage=4&page=1" className={({isActive}) => isActive ? "nav-center__link--isActive nav-center__link": "nav-center__link"}>
               Tablets
             </NavLink>
           </li>
 
           <li className="nav-center__item">
-            <NavLink to="catalog/accessories" className={({isActive}) => isActive ? "nav-center__link--isActive nav-center__link": "nav-center__link"}>
+            <NavLink to="catalog/accessories?sort=newest&itemsPerPage=4&page=1" className={({isActive}) => isActive ? "nav-center__link--isActive nav-center__link": "nav-center__link"}>
               Accessories
             </NavLink>
           </li>

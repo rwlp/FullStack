@@ -8,7 +8,6 @@ import Footer from "./components/Footer/Footer.tsx";
 import Header from "./components/Header/Header.tsx";
 import Catalog from "./pages/Catalog/Catalog.tsx";
 import Home from "./pages/Home/Home.tsx";
-import Login from "./pages/Login/Login.tsx";
 
 function App(): React.ReactNode {
   const [theme] = useState("light");

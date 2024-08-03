@@ -1,6 +1,6 @@
 import React from 'react';
 import StyledProductCard from './StyledProductCard.ts';
-import { BASE_URL_CDN } from '../../utils/constants.ts';
+import { BASE_URL_CDN } from '../../common/constants.ts';
 import Button from '../Button/Button.tsx';
 import ButtonFavorite from '../ButtonFavorite/ButtonFavorite.tsx';
 import { Product } from '../../types/types.ts';

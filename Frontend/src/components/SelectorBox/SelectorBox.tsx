@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import StyledSelectorBox from './StyledSelectorBox.ts';
 import IconArrowDonw from '../../assets/icons/Arrow-down.svg'
 import { useLocation, useNavigate } from 'react-router-dom';
-import { pascalCase } from '../../utils/methodos.ts';
+import { pascalCase } from '../../common/methodos.ts';
 
 
 interface SelectorBoxProps {

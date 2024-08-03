@@ -1,6 +1,6 @@
 import React from 'react';
 import StyledFooter from './StyledFooter.ts';
-import { BASE_URL_CDN } from '../../utils/constants.ts';
+import { BASE_URL_CDN } from '../../common/constants.ts';
 import ButtonArrowPointer from '../ButtonArrowPointer/ButtonArrowPointer.tsx';
 
 
