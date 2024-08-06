@@ -4,7 +4,7 @@ import catalogRouter from "./modules/catalog/routes";
 
 const router = Router();
 
-router.use("/users", usersRouter);
-router.use("/catalog", catalogRouter);
+router.use("/api/users", usersRouter);
+router.use("/api/catalog", catalogRouter);
 
 export default router;

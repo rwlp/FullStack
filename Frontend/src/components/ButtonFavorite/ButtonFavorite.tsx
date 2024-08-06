@@ -17,11 +17,12 @@ function ButtonFavorite({
     <StyledButtonFavorite
       className={`button-favorite ${isFavorite ? "button-favorite--selected" : ""}`}
     >
-      {isFavorite ? (
-        <HeartIconFilled fill={likeFilledColor} />
-      ) : (
-        <HeartIconEmpty fill={likeEmptyColor} />
-      )}
+      {isFavorite
+      // @ts-ignore
+      ? <HeartIconFilled fill={likeFilledColor} />
+      // @ts-ignore      
+      : <HeartIconEmpty fill={likeEmptyColor} />
+      }
     </StyledButtonFavorite>
   );
 }

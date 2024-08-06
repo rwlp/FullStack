@@ -10,8 +10,8 @@ interface ProductsListProps {
   title: string;
 }
 
-function ProductsList({fetchEndPoint, title}: ProductsListProps): React.ReactNode {
-  const [productsList, setProductsList] = useState<Product[] | undefined[]>(Array(20).fill(undefined));
+function ProductsList({title}: ProductsListProps): React.ReactNode {
+  const [productsList] = useState<Product[] | undefined[]>(Array(20).fill(undefined));
 
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const [startX, setStartX] = useState<number>(0);
@@ -77,8 +77,8 @@ function ProductsList({fetchEndPoint, title}: ProductsListProps): React.ReactNod
       <div className='list__title-and-buttons'>
       <h2 className='list__title'>{title}</h2>
       <div className='buttons'>
-        <ButtonArrowPointer direction="left" isDisabled={isAtStart} callback={() => scroll('left')}/>
-        <ButtonArrowPointer direction="right" isDisabled={isAtEnd} callback={() => scroll('right')} />
+        <ButtonArrowPointer direction="left" isDisabled={isAtStart} onClick={() => scroll('left')}/>
+        <ButtonArrowPointer direction="right" isDisabled={isAtEnd} onClick={() => scroll('right')} />
       </div>
       </div>
       <div className='list__container' ref={scrollContainerRef}>

@@ -23,7 +23,8 @@ function CartItem({itemName = "Apple iPhone 14 Pro 128GB Silver (MQ023)", itemQt
     <StyledCartItem className='cart-item' >
       <div className='cart-item__mobile-container--1' >
         <button className='cart-item__delete-Button'>
-          <DeleteIcon fill={colorDisable}/>
+          { // @ts-ignore
+          <DeleteIcon fill={colorDisable}/>}
         </button>
 
         <a href='#' className='cart-item__image-link'>
@@ -36,13 +37,15 @@ function CartItem({itemName = "Apple iPhone 14 Pro 128GB Silver (MQ023)", itemQt
       <div className='cart-item__mobile-container--2' >
         <div className='cart-item__qtd-buttons qtd-buttons'>
           <button className='qtd-buttons__change-qtd'>
-            <IconDesc fill={colorActive} />
+          { // @ts-ignore
+            <IconDesc fill={colorActive} />}
           </button>
 
           <span className='qtd-buttons__indicator'>{itemQtd}</span>
 
           <button className='qtd-buttons__change-qtd'>
-            <IconAsc fill={colorActive}/>
+          { // @ts-ignore
+            <IconAsc fill={colorActive}/> }
           </button>
         </div>
 

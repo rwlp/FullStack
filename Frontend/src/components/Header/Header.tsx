@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { ThemeContext } from "styled-components";
 import StyledHeader from "./StyledHeader.ts";
 import { BASE_URL_CDN } from "../../common/constants.ts";
@@ -57,7 +57,8 @@ function Header(): React.ReactNode {
               href="/"
               aria-label="Got to Your Favorites"
             >
-              <HeartIcon fill={colorIcons} />
+              {// @ts-ignore
+              <HeartIcon fill={colorIcons} /> }
             </a>
           </li>
 
@@ -67,7 +68,8 @@ function Header(): React.ReactNode {
               href="/"
               aria-label="Got to Cart Items"
             >
-              <BagIcon fill={colorIcons} />
+              {// @ts-ignore
+              <BagIcon fill={colorIcons} /> }
             </a>
           </li>
 
@@ -77,7 +79,8 @@ function Header(): React.ReactNode {
               href="/"
               aria-label="Open Mobile Menu Navigation"
             >
-              <MenuIcon fill={colorIcons} />
+              {// @ts-ignore
+              <MenuIcon fill={colorIcons} /> }
             </a>
           </li>
 

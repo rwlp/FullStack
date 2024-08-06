@@ -36,11 +36,8 @@ function ButtonArrowPointer({
       disabled={isDisabled}
       onClick={onClick}
     >
-      <Icon
-        width={16}
-        height={16}
-        fill={isDisabled ? colors.icons : colors.gray}
-      />
+      {// @ts-ignore
+      <Icon width={16} height={16} fill={isDisabled ? colors.icons : colors.gray} />}
     </StyledButtonArrowPointer>
   );
 }

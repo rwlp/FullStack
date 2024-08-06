@@ -12,7 +12,7 @@ export function middlewareErrors(err: Error, _req: Request, res: Response, _next
     logError(err);
   } else {
     res.status(500).json({
-      message: "Internal Server Error",
+      message: err.message,
       status: 500
     });
 
