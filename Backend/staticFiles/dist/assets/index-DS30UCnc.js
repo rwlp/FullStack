@@ -271,7 +271,7 @@ Error generating stack: `+i.message+`
   }
 
 
-`,Kn="https://rwlp.github.io/FullStack_CDN",_y="http://localhost:3000/api",ky=Ie.button`
+`,Kn="https://rwlp.github.io/FullStack_CDN",_y="https://fullstack-2485.onrender.com/api",ky=Ie.button`
   width: 32px;
   height: 32px;
   box-sizing: border-box;
