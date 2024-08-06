@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import StyledSelectorBox from './StyledSelectorBox.ts';
 import IconArrowDonw from '../../assets/icons/Arrow-down.svg'
 import { useLocation, useNavigate } from 'react-router-dom';
-import { pascalCase } from '../../common/methodos.ts';
+import { pascalCase } from '../../common/methods.ts';
 
 
 interface SelectorBoxProps {
@@ -36,7 +36,8 @@ function SelectorBox({ type}: SelectorBoxProps): React.ReactNode {
     return () => 
       {
         setIsDown(false);
-        type === 'sort-by' ? searchParams.set('sort', option.toLowerCase()) : searchParams.set('itemsPerPage', option.toLowerCase());
+        type === 'sort-by' ? searchParams.set('sort', option.toLowerCase()) : searchParams.set('itemsPerPage', option);
+        searchParams.set('page', '1');
         navigate(`${location.pathname}?${searchParams}`);
       }
   }

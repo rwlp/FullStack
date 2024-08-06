@@ -43,7 +43,6 @@ export class AxiosConfigBuilder {
     }
 
     build(): AxiosRequestConfig {
-        console.log('finish build');
         return this.config;
     }
 }

@@ -15,6 +15,10 @@ export function logError(error: AppError | Error) {
   });
 }
 
-export function responseWrapper(res: Response, message: string, status: number, dataType: string, data: unknown ) {
+export function responseWrapper(res: Response, message: string, status: number, dataType: string, data: unknown, isCached: boolean = false ) {
+  if (isCached) {
+    res.setHeader('Cache-Control', 'public, max-age=180');
+  }
+  
   res.status(status).json(new ResponseDTO(message, status, dataType, data));
 };

@@ -9,7 +9,7 @@ class UsersController {
         
         const createdUser = await usersService.createUser(data);
 
-        responseWrapper(res, "User Created!", 200, createdUser.getClassName(), createdUser);
+        responseWrapper(res, "User Created!", 200, createdUser.constructor.name, createdUser);
     }
 }
 

@@ -40,3 +40,7 @@ export class RequestDTO {
     }
   }
 }
+
+export class ProductDTO {
+  
+}

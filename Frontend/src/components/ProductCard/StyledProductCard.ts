@@ -13,16 +13,19 @@ const StyledProductCard = styled.div`
 
   background-color: ${({theme}) => theme.sencondaryAccent};
 
+
   .product__link {
     padding: 0;
     margin: 0;
     min-height: 196px;
     min-width: 208px;
+    text-align: center;
   }
 
   .product__img {
     height: 196px;
-    width: 208px;
+
+    transition: display 2s ease-in;
   }
 
   .product__name {

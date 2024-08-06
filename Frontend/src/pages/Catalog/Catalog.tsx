@@ -12,19 +12,17 @@ function Catalog(): React.ReactNode {
   const { category }  = useParams();
   const location = useLocation();
   const searchParams =  new URLSearchParams(location.search);
-  const [products, setProducts] = useState<Product[] | undefined[]>(new Array(parseInt(searchParams.get('itemsPerPage')!)).fill(undefined));
-
-
+  const [products, setProducts] = useState<Product[]>(() => {
+    return new Array(parseInt(searchParams.get('itemsPerpage') ?? '4')).fill(undefined);
+  });
+  
   useEffect(() => {
     const search = new URLSearchParams(location.search);
     setProducts(new Array(parseInt(search.get('itemsPerPage')!)).fill(undefined));
-    setTimeout(() => {
-      getProductsByCategoryService(category as Category, searchParams)
-      .then(() => {
-        // Wait backend developement
-      });
-    }, 1500)
-    
+    setTimeout(() => getProductsByCategoryService(category as Category, searchParams)
+      .then(data => {
+        setProducts(data.data as Product[]);
+      }), 200);
   }, [location])
 
   return (
@@ -37,12 +35,12 @@ function Catalog(): React.ReactNode {
       </div>
 
       <div className='catalog__container'>
-        {products.map((product) => {
-          return  (<ProductCard product={product} />);
+        {products.map((product, index) => {
+          return  (<ProductCard key={index} product={product} />);
         })}
       </div>
       
-      <Paginator limit={32}/>
+      <Paginator />
 
     </StyledCatalog>
   );

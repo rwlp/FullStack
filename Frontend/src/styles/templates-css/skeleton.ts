@@ -5,6 +5,8 @@ export const skeleton = css`
   position: relative;
   background-color: ${({theme}) => theme.primary};
   overflow: hidden;
+  opacity: 1;
+  visibility: visible;
   }
 
   .skeleton::before {
@@ -23,6 +25,8 @@ export const skeleton = css`
     animation: skeleton-loading 1s infinite ease;
   }
 
+  
+
   @keyframes skeleton-loading {
     0% {
       transform: translateX(-100%);
@@ -32,7 +36,8 @@ export const skeleton = css`
     }
   }
 
-  .--hidden {
-    display: none;
+  .hide-for-skeleton {
+    opacity: 0;
+    visibility: hidden;
   }
 `;

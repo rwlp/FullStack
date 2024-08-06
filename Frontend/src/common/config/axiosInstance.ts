@@ -2,13 +2,13 @@ import axios, {AxiosResponse} from 'axios';
 
 const axiosInstance = axios.create();
 
-axiosInstance.interceptors.response.use((res: AxiosResponse) => {
-  console.log('pass in interception', res.data.data);
+axiosInstance.interceptors.response.use( async (res: AxiosResponse) => {
   if (res.data.status >= 200 && res.data.status < 300) {
-    return Promise.reject(new Error(res.data.message));
+    return res.data;
+  } else {
+    throw new Error('message');
   }
 
-  return res.data;
 }, (error) => {
   return Promise.reject(error); 
 });

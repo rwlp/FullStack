@@ -1,21 +1,23 @@
 # Backend Notes
 
 ## Description
-This is importants notes about backend projetc, based on [MateAcademy Brasil](https://mate.academy/pt-br) final project fullstack bootcamp.
+This is importants notes about backend project, based on [MateAcademy Brasil](https://mate.academy/pt-br) final project fullstack bootcamp.
 
 ## Hi from the author: 
-- Hi! I hope you apreciate this!
+- Hi! I hope you apreciate this! In fact This project is a bit more advanced than Mate Academy final project, I used my skill in Java Design Patterns to implement the back-end, see the details below.
 
 ## Design Patterns
  - We use some techniques to improve the security, readability and scalability of the system: 
-  - DTO(Data Transfer Objects): All data in request body are verified through DTO. The constructor of this classes validade data.
+  - DTO(Data Transfer Objects) to validade request data in body. 
   - We centralized error handling and register in a log file (error.log) all suspect behaviors
-  - Modularization of services
   - Separation of concers:
     - Repository for database operations
     - Service for bussines logic
     - Controller Handle HTTP Request and Response
     - Router to group related routes
+
+## Request Flow Diagram
+![Diagram](githubAssets/requestflowdiagram.png)
 
 ## Run backend in yor localhost
 
