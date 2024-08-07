@@ -8,6 +8,7 @@ import Footer from "./components/Footer/Footer.tsx";
 import Header from "./components/Header/Header.tsx";
 import Catalog from "./pages/Catalog/Catalog.tsx";
 import Home from "./pages/Home/Home.tsx";
+import SideBar from "./components/SideBar/SideBar.tsx";
 
 function App(): React.ReactNode {
   const [theme] = useState("light");
@@ -15,6 +16,7 @@ function App(): React.ReactNode {
   return (
     <ThemeProvider theme={theme === "dark" ? lightTheme : darkTheme}>
       <>
+        <SideBar />
         <Header />
         
         <main>  

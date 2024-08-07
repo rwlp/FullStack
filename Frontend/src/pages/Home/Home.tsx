@@ -29,7 +29,7 @@ function Home(): React.ReactNode {
         <button className='banner-button' >
           <IconLeft />
         </button>
-        <img className='banner__image' src={isMobile ? '/img/banner_small.png' : '/img/banner_large_1.png'} />
+        <img className='banner__image' src={isMobile ? `${BASE_URL_CDN}/img/banner_small.png` :  `${BASE_URL_CDN}/img/banner_large_1.png`} />
         <button className='banner-button' >
           <IconRight />
         </button>
