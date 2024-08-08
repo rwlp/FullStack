@@ -1,13 +1,73 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { letterStyleH1DesktoAndTable, letterStyleH3DesktoAndTable, letterStyleSmallTextDesktoAndTable } from '../../styles/typography/typography';
+
+const cssForLogin = css`
+  .login {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &__title {
+      ${letterStyleH1DesktoAndTable};
+      padding: 0;
+      margin: 0;
+    }
+
+    &__favIcon {
+      width: 48px;
+      height: 48px;
+    }
+
+    &__create-user {
+      text-decoration: underline;
+      color: #3390ff;
+      cursor: pointer;
+    }
+
+    &__form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    &__input {
+      width: 100%;
+      height: 48px;
+      border-radius: 20px;
+      border: none;
+      box-sizing: border-box;
+      padding: 12px;
+      ${letterStyleSmallTextDesktoAndTable};
+      font-size: 18px;
+      color: ${({theme}) => theme.gray};
+      background-color: ${({theme}) => theme.hoverAndBG};
+    }
+
+    &__submit-login {
+      width: 100%;
+      height: 48px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: ${({theme}) => theme.accent};
+      ${letterStyleH3DesktoAndTable};
+      color: ${({theme}) => theme.gray};
+    }
+
+
+
+  }
+`;
 
 const StyledSideBar = styled.aside`
   width: 320px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  border-radius: 10px;
   padding: 16px;
   background-color: ${({theme}) => theme.elements};
-  margin-top: 64px;
+  margin-top: 68px;
 
   position: fixed;
   top: 0;
@@ -28,7 +88,11 @@ const StyledSideBar = styled.aside`
 
   .side-bar__close-button {
     width: 100%;
-    height: 32px;
+    height: 48px;
+
+    &:hover {
+      background-color: ${({theme}) => theme.hoverAndBG};
+    }
   }
 
   .info {
@@ -89,10 +153,18 @@ const StyledSideBar = styled.aside`
 
     &__item {
       width: 100%;
-      height: 96px;
+      height: 48px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      border-radius: 5px;
+      padding: 5px;
+
+      &:hover {
+        background-color: ${({theme}) => theme.hoverAndBG};
+        border: 1px solid wheat;
+
+      }
     }
 
     .nav__item-details {
@@ -103,6 +175,7 @@ const StyledSideBar = styled.aside`
     }
   }
 
+  ${cssForLogin};
 
 `;
 

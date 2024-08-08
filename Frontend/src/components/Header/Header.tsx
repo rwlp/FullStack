@@ -5,7 +5,6 @@ import StyledHeader from "./StyledHeader.ts";
 import { BASE_URL_CDN } from "../../common/constants.ts";
 import HeartIcon from "../../assets/icons/HeartLike-empty.svg";
 import BagIcon from "../../assets/icons/Empty-cart.svg";
-import MenuIcon from "../../assets/icons/Menu.svg";
 import { useAppDispatch, useAppSelector } from "../../context/hooks.ts";
 import { toggleSideMenu } from "../../context/pageSettingsSlice/pageSettingsSlicer.ts";
 
@@ -13,6 +12,7 @@ function Header(): React.ReactNode {
   const colorIcons = useContext(ThemeContext)!.gray;
   const dispatchRedux = useAppDispatch();
   const sideBarIsOpen = useAppSelector(state => state.pageSettings.sideMenu);
+  const isLoginActive = useAppSelector(state => !!state.user.token)
 
   return (
     <StyledHeader className="header">
@@ -77,17 +77,6 @@ function Header(): React.ReactNode {
             </a>
           </li>
 
-          <li className="nav-right__item nav-right__item--menu">
-            <a
-              className="nav-right__link"
-              href="/"
-              aria-label="Open Mobile Menu Navigation"
-            >
-              {// @ts-ignore
-              <MenuIcon fill={colorIcons} /> }
-            </a>
-          </li>
-
           <li className="nav-right__item nav-right__item--login">
             <button
               className="nav-right__link"
@@ -95,7 +84,7 @@ function Header(): React.ReactNode {
               onClick={() => dispatchRedux(toggleSideMenu())}
               disabled={sideBarIsOpen}
             >
-              <img className='nav-right__avatar-img' src={`${BASE_URL_CDN}/img/avatar.png`} />
+              <img className='nav-right__avatar-img' src={isLoginActive ? `/loginVerifyed.png` : `${BASE_URL_CDN}/img/avatar.png`} />
             </button>
           </li>
 

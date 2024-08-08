@@ -124,32 +124,6 @@ const StyledHeader = styled.header`
       width: var(--height);
       height: var(--height);
       box-shadow: -1px 0px 0px 0px ${({ theme }) => theme.hoverAndBG};
-
-      &--menu {
-        display: none;
-
-        @media (max-width: 640px) {
-          display: block;
-        }
-      }
-
-      &--favorites {
-        @media (max-width: 640px) {
-          display: none;
-        }
-      }
-
-      &--cart {
-        @media (max-width: 640px) {
-          display: none;
-        }
-      }
-
-      &--login {
-        @media (max-width: 640px) {
-          display: none;
-        }
-      }
     }
 
     &__link {

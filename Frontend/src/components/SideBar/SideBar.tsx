@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import StyledSideBar from './StyledSideBar.ts';
 import { useAppDispatch, useAppSelector } from '../../context/hooks.ts';
 import { toggleSideMenu } from '../../context/pageSettingsSlice/pageSettingsSlicer.ts';
@@ -10,11 +10,14 @@ import LoginIcon from '../../assets/icons/LoginDoor.svg';
 import BagIcon from '../../assets/icons/Empty-cart.svg';
 import HomeIcon from '../../assets/icons/Home.svg';
 import Login from './Login.tsx';
+import { ThemeContext } from 'styled-components';
+import { setToken } from '../../context/userSlice/userSlice.ts';
 
 function SideBar(): React.ReactNode {
   const sideBarState = useAppSelector(state => state.pageSettings.sideMenu);
   const dispatchRedux = useAppDispatch();
   const isLoginActive = useAppSelector(state => !!state.user.token);
+  const theme = useContext(ThemeContext)!;
   const refToSideBar = useRef<HTMLDivElement>(null);
 
   const handleClickOutside = (event: MouseEvent) => {
@@ -38,7 +41,7 @@ function SideBar(): React.ReactNode {
     <StyledSideBar ref={refToSideBar} className={`side-bar ${sideBarState ? 'open' : ''}`}>
       <button className='side-bar__close-button' onClick={() => dispatchRedux(toggleSideMenu())}>
         {// @ts-ignore
-        <CloseIcon />
+        <CloseIcon width={20} height={20} fill={theme.gray} />
         }
       </button>
       {isLoginActive
@@ -75,11 +78,11 @@ function SideBar(): React.ReactNode {
           </ul>
           </nav>
 
-          <button className='side-bar__logout'>
+          <button className='side-bar__logout' onClick={() => dispatchRedux(setToken(''))}>
             <LoginIcon />
           </button>
         </>)
-        : (<Login className='side-bar__login'/>) }
+        : (<Login className='login'/>) }
       
     </StyledSideBar>
   );

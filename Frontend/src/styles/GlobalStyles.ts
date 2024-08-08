@@ -31,6 +31,7 @@ export const GlobalStyles = createGlobalStyle`
     position: relative;
     display: flex;
     flex-direction: column;
+    align-items: center   ;
     width: 100%;
   }
 
@@ -41,8 +42,8 @@ export const GlobalStyles = createGlobalStyle`
     display: flex;
     justify-content: center;
     position: relative;
-
-    margin-top: 64px; 
+    margin-top: 64px;
+    
     @media (max-width: 640px) {
       margin-top: 48px;
       padding-inline: 16px;
