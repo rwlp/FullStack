@@ -4,7 +4,6 @@ import Button from '../../components/Button/Button.tsx';
 import CartItem from '../../components/CartItem/CartItem.tsx';
 
 function Cart(): React.ReactNode {
-  
 
   return (
     <StyledCart className='cart'>
