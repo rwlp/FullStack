@@ -7,7 +7,7 @@ interface ButtonProps {
   onclick?: () => void;
 }
 
-function Button({ text, isSelected = true, onclick }: ButtonProps): React.ReactNode {
+function Button({ text, isSelected = true }: ButtonProps): React.ReactNode {
   return (
     <StyledButton
       className={`button ${isSelected ? "button--isSelected" : ""}`}
