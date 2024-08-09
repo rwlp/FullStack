@@ -3,13 +3,13 @@ import { letterStyleBodyTextDesktoAndTable, letterStyleH3DesktoAndTable } from '
 
 const StyledCartItem = styled.div`
   width: 100%;
-  max-width: 752px;
   padding: 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0 24px;
   box-sizing: border-box;
+  background-color: ${({theme}) => theme.secondaryAccent};
 
   @media (max-width: 640px) {
     flex-direction: column;
@@ -31,9 +31,6 @@ const StyledCartItem = styled.div`
     display: flex;
     align-items: center;
     gap: 0 24px;
-
-    @media (max-width: 640px) {
-    }
   }
 
   .cart-item__mobile-container--2 {

@@ -9,6 +9,8 @@ import Header from "./components/Header/Header.tsx";
 import Catalog from "./pages/Catalog/Catalog.tsx";
 import Home from "./pages/Home/Home.tsx";
 import SideBar from "./components/SideBar/SideBar.tsx";
+import Favorites from "./pages/Favorites/Favorites.tsx";
+import Cart from "./pages/Cart/Cart.tsx";
 
 function App(): React.ReactNode {
   const [theme] = useState("light");
@@ -20,10 +22,12 @@ function App(): React.ReactNode {
         <Header />
         
         <main>  
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/catalog/:category" element={<Catalog />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/catalog/:category" element={<Catalog />} />
+            <Route path="/cart" element={<Cart />}/>
+            <Route path="/favorites" element={<Favorites />}/>
+          </Routes>
         </main>
         
         <Footer />

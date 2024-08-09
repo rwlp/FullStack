@@ -4,9 +4,10 @@ import StyledButton from "./StyledButton.ts";
 interface ButtonProps {
   text: string;
   isSelected?: boolean;
+  onclick?: () => void;
 }
 
-function Button({ text, isSelected = true }: ButtonProps): React.ReactNode {
+function Button({ text, isSelected = true, onclick }: ButtonProps): React.ReactNode {
   return (
     <StyledButton
       className={`button ${isSelected ? "button--isSelected" : ""}`}

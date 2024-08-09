@@ -56,35 +56,35 @@ function Header(): React.ReactNode {
       <div className="header__right-nav nav-right">
         <ul className="nav-right__list">
           <li className="nav-right__item nav-right__item--favorites">
-            <a
+            <NavLink
               className="nav-right__link"
-              href="/"
+              to="/favorites"
               aria-label="Got to Your Favorites"
             >
               {// @ts-ignore
               <HeartIcon fill={colorIcons} /> }
-            </a>
+            </NavLink>
           </li>
 
           <li className="nav-right__item nav-right__item--cart">
-            <a
+            <NavLink
               className="nav-right__link"
-              href="/"
+              to="/cart"
               aria-label="Got to Cart Items"
             >
               {// @ts-ignore
               <BagIcon fill={colorIcons} /> }
-            </a>
+            </NavLink>
           </li>
 
           <li className="nav-right__item nav-right__item--login">
             <button
-              className="nav-right__link"
+              className={`nav-right__link`}
               aria-label="Got to Your Profile Settings or Loggin Page"
               onClick={() => dispatchRedux(toggleSideMenu())}
               disabled={sideBarIsOpen}
             >
-              <img className='nav-right__avatar-img' src={isLoginActive ? `/loginVerifyed.png` : `${BASE_URL_CDN}/img/avatar.png`} />
+              <img className={`nav-right__avatar-img ${sideBarIsOpen && '--sideBarIsOpen-background'}`} src={isLoginActive ? `/loginVerifyed.png` : `${BASE_URL_CDN}/img/avatar.png`} />
             </button>
           </li>
 

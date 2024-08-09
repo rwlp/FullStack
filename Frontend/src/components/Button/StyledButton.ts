@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { letterStyleButtonsDesktoAndTable } from "../../styles/typography/typography.ts";
 
 const StyledButton = styled.button`
-  width: 176px;
+  width: 100%;
   height: 40px;
   display: flex;
   align-items: center;

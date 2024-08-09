@@ -142,6 +142,10 @@ const StyledHeader = styled.header`
         border-radius: 50%;
       }
   }
+
+    .--sideBarIsOpen-background {
+      background-color: ${({theme}) => theme.elements} ;
+    }
 `;
 
 export default StyledHeader;
