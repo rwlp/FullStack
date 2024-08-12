@@ -163,12 +163,20 @@ const StyledSideBar = styled.aside`
       &:hover {
         background-color: ${({theme}) => theme.hoverAndBG};
         border: 1px solid wheat;
-
       }
     }
 
     .nav__item-details {
       width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-details__link {
+      color: white;
+      text-decoration: none;
+
       display: flex;
       align-items: center;
       justify-content: space-between;

@@ -5,9 +5,7 @@ import { toggleSideMenu } from '../../context/pageSettingsSlice/pageSettingsSlic
 import CloseIcon from '../../assets/icons/Close.svg';
 import { BASE_URL_CDN } from '../../common/constants.ts';
 import NavItem from './NavItem.tsx';
-import HeartLikeIcon from '../../assets/icons/HeartLike-empty.svg';
 import LoginIcon from '../../assets/icons/LoginDoor.svg';
-import BagIcon from '../../assets/icons/Empty-cart.svg';
 import HomeIcon from '../../assets/icons/Home.svg';
 import Login from './Login.tsx';
 import { ThemeContext } from 'styled-components';
@@ -60,20 +58,21 @@ function SideBar(): React.ReactNode {
 
           <nav className='side-bar__nav nav'>
           <ul className="nav__list">
+
             <li className="nav__item">
-              <NavItem className='nav__item-details' Icon={HeartLikeIcon} title={`Go to Favorites`}/>
+              <NavItem className='nav__item-details' Icon={HomeIcon} title={`Go to Home`} gotToPath="/"/>
             </li>
 
             <li className="nav__item">
-              <NavItem className='nav__item-details' Icon={BagIcon} title={`Go to Cart`}/>
+              <NavItem className='nav__item-details' Icon={HomeIcon} title={`Go to Phones`} gotToPath="/catalog/phones?sort=newest&itemsPerPage=4&page=1"/>
             </li>
 
             <li className="nav__item">
-              <NavItem className='nav__item-details' Icon={HomeIcon} title={`Go to Home`}/>
+              <NavItem className='nav__item-details' Icon={HomeIcon} title={`Go to Tablets`} gotToPath="/catalog/tablets?sort=newest&itemsPerPage=4&page=1"/>
             </li>
 
             <li className="nav__item">
-              <NavItem className='nav__item-details' Icon={HeartLikeIcon} title={`Go to Github`}/>
+              <NavItem className='nav__item-details' Icon={HomeIcon} title={`Go to Accessories`} gotToPath="/catalog/accessories?sort=newest&itemsPerPage=4&page=1"/>
             </li>
           </ul>
           </nav>
