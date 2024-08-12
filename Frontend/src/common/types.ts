@@ -6,3 +6,10 @@ export interface ResponseDTO {
   dataType: string; // For debug porpuses
   data: unknown;
 }
+
+export interface Description {
+  id: number;
+  title: string;
+  text: string[];
+  language: String;
+}

@@ -14,7 +14,8 @@ function ButtonRadioSelector({
     <StyledButtonRadioSelector
       className={`radio-button ${isSelected ? "radio-button--isSelected" : ""}`}
       $mainColor={color}
-    />
+    >
+    </StyledButtonRadioSelector>
   );
 }
 

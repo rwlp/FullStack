@@ -11,6 +11,7 @@ import Home from "./pages/Home/Home.tsx";
 import SideBar from "./components/SideBar/SideBar.tsx";
 import Favorites from "./pages/Favorites/Favorites.tsx";
 import Cart from "./pages/Cart/Cart.tsx";
+import Item from "./pages/Item/Item.tsx";
 
 function App(): React.ReactNode {
   const [theme] = useState("light");
@@ -27,6 +28,7 @@ function App(): React.ReactNode {
             <Route path="/catalog/:category" element={<Catalog />} />
             <Route path="/cart" element={<Cart />}/>
             <Route path="/favorites" element={<Favorites />}/>
+            <Route path="/item/:idItem" element={<Item />}/>
           </Routes>
         </main>
         

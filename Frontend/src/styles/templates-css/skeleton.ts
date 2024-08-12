@@ -7,6 +7,7 @@ export const skeleton = css`
   overflow: hidden;
   opacity: 1;
   visibility: visible;
+  pointer-events: none;
   }
 
   .skeleton::before {
