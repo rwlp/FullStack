@@ -26,7 +26,6 @@ const corsMiddleware = (req: Request, res: Response, next: NextFunction) => {
 
 app.use(corsMiddleware);
 
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

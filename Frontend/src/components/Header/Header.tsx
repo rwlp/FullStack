@@ -12,7 +12,8 @@ function Header(): React.ReactNode {
   const colorIcons = useContext(ThemeContext)!.gray;
   const dispatchRedux = useAppDispatch();
   const sideBarIsOpen = useAppSelector(state => state.pageSettings.sideMenu);
-  const isLoginActive = useAppSelector(state => !!state.user.token)
+  const isLoginActive = useAppSelector(state => state.user.loadingStatus === 'success-login');
+  const userMessage = useAppSelector(state => state.user.message);
 
   return (
     <StyledHeader className="header">
@@ -54,6 +55,7 @@ function Header(): React.ReactNode {
       </nav>
 
       <div className="header__right-nav nav-right">
+        {isLoginActive && <h4 className="nav-right__user-name">{userMessage}</h4>}
         <ul className="nav-right__list">
           <li className="nav-right__item nav-right__item--favorites">
             <NavLink
@@ -84,20 +86,9 @@ function Header(): React.ReactNode {
               onClick={() => dispatchRedux(toggleSideMenu())}
               disabled={sideBarIsOpen}
             >
-              <img className={`nav-right__avatar-img ${sideBarIsOpen && '--sideBarIsOpen-background'}`} src={isLoginActive ? `/loginVerifyed.png` : `${BASE_URL_CDN}/img/avatar.png`} />
+              <img className={`nav-right__avatar-img ${sideBarIsOpen && '--sideBarIsOpen-background'}`} src={isLoginActive ? `${BASE_URL_CDN}/img/avatar.png` : `${BASE_URL_CDN}/img/avatar.png`} />
             </button>
           </li>
-
-          {/* <li className="nav-right__item nav-right__item--login">
-            {change this to avatar photo }
-            <a
-              className="nav-right__link"
-              href="/"
-              aria-label="Open UserAccount Options"
-            >
-              <LogoutIcon fill={colorIcons} /> 
-            </a>
-          </li>*/}
         </ul>
       </div>
     </StyledHeader>

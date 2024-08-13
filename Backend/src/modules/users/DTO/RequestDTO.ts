@@ -2,7 +2,7 @@ import { Expose } from "class-transformer";
 import { IsEmail, IsString, IsStrongPassword, Length, validateSync } from "class-validator";
 import AppError from "../../../common/utils/AppError";
 
-export class CreateUserDTO {
+export class CreateUserDTORequest {
     static getClassName() {
         return 'CreateUserDTO'
     }
@@ -32,24 +32,11 @@ export class CreateUserDTO {
     }
 }
 
-export class UserDTO {
-    getClassName() {
-        return 'UserDTO'
-    }
 
-    @Expose()
-    name: string;
 
-    @Expose()
-    email: string;
-
-    @Expose()
-    profilePhoto: string;
-}
-
-export class AuthUserDTO {
+export class UserAuthDTORequest {
     static getClassName() {
-        return 'AuthUserDTO'
+        return 'UserAuthDTO'
     }
 
     @IsString()

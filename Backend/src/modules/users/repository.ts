@@ -1,9 +1,11 @@
 import { plainToInstance } from "class-transformer";
 import prisma from "../../common/config/prismaClient.ts";
-import { CreateUserDTO, UserDTO } from "./DTO/RequestDTO.ts";
+import { CreateUserDTORequest } from "./DTO/RequestDTO.ts";
+import { UserDTOResponse } from "./DTO/ResponseDTO.ts";
+import { UserAllDataDTO } from "../../common/utils/dto.ts";
 
 class UsersRepository {
-    async createUser(createUserDTO: CreateUserDTO): Promise<UserDTO> {
+    async createUser(createUserDTO: CreateUserDTORequest): Promise<UserDTOResponse> {
         const createdUser = await prisma.user.create({
             data: {
                 ...createUserDTO,
@@ -13,7 +15,20 @@ class UsersRepository {
             }
         });
 
-        return plainToInstance(UserDTO, createdUser, {excludeExtraneousValues: true});
+        return plainToInstance(UserDTOResponse, createdUser, {excludeExtraneousValues: true} );
+    }
+
+    async findUserByEmail(email: string): Promise<UserAllDataDTO | null> {
+        try {
+            const user: UserAllDataDTO | null = await prisma.user.findUnique({where: {
+                email
+            }});
+
+            return user; 
+
+        } catch (error) {
+            throw error;
+        }
     }
 }
 

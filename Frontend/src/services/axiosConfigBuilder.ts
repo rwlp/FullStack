@@ -34,6 +34,8 @@ export class AxiosConfigBuilder {
             data: data,
             dataType: dataType,
         }
+
+        return this;
     }
 
     setParams(params: URLSearchParams) {

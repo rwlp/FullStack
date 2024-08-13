@@ -9,12 +9,12 @@ import LoginIcon from '../../assets/icons/LoginDoor.svg';
 import HomeIcon from '../../assets/icons/Home.svg';
 import Login from './Login.tsx';
 import { ThemeContext } from 'styled-components';
-import { setToken } from '../../context/userSlice/userSlice.ts';
+import { logoutUser } from '../../context/userSlice/userSlice.ts';
 
 function SideBar(): React.ReactNode {
-  const sideBarState = useAppSelector(state => state.pageSettings.sideMenu);
   const dispatchRedux = useAppDispatch();
-  const isLoginActive = useAppSelector(state => !!state.user.token);
+  const sideBarState = useAppSelector(state => state.pageSettings.sideMenu);
+  const isLoginActive = useAppSelector(state => state.user.loadingStatus === "success-login");
   const theme = useContext(ThemeContext)!;
   const refToSideBar = useRef<HTMLDivElement>(null);
 
@@ -77,7 +77,7 @@ function SideBar(): React.ReactNode {
           </ul>
           </nav>
 
-          <button className='side-bar__logout' onClick={() => dispatchRedux(setToken(''))}>
+          <button className='side-bar__logout' onClick={() => dispatchRedux(logoutUser())}>
             <LoginIcon />
           </button>
         </>)

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { letterStyleUpperCase } from "../../styles/typography/typography.ts";
+import { letterStyleH4DesktoAndTable, letterStyleUpperCase } from "../../styles/typography/typography.ts";
 
 const StyledHeader = styled.header`
   --height: 64px;
@@ -111,6 +111,14 @@ const StyledHeader = styled.header`
     display: flex;
     gap: 0;
     justify-content: end;
+    align-items: center;
+
+    .nav-right__user-name {
+      padding-right: 30px;
+      ${letterStyleH4DesktoAndTable};
+      margin: 0;
+      color: ${({theme}) => theme.gray}
+    }
 
     &__list {
       padding: 0;
