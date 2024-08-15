@@ -4,8 +4,10 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
+    "build": "npm run build:frontend && npm run build:backend",
+    "build:frontend": "cd ../Frontend && npm install && npm run build && npx shx cp -r dist/ ../Backend/staticFiles",
+    "build:backend": "cd ../Backend && npx prisma generate && npx tsc",
     "start": "node ./dist/server.js",
-    "build": "npm install && cd ../Frontend && npm install && npm run build && npx shx cp -r dist/ ../Backend/staticFiles && cd ../Backend && npx prisma generate && tsc",
     "dev": "nodemon --exec ts-node src/server.ts",
     "lint": "npx eslint \"src/**/*.{ts,js}\" --fix"
   },
