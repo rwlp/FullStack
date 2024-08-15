@@ -1,8 +1,8 @@
 import { plainToInstance } from "class-transformer";
-import prisma from "../../common/config/prismaClient.ts";
-import { CreateUserDTORequest } from "./DTO/RequestDTO.ts";
-import { UserDTOResponse } from "./DTO/ResponseDTO.ts";
-import { UserAllDataDTO } from "../../common/utils/dto.ts";
+import prisma from "../../common/config/prismaClient";
+import { CreateUserDTORequest } from "./DTO/RequestDTO";
+import { UserDTOResponse } from "./DTO/ResponseDTO";
+import { UserAllDataDTO } from "../../common/utils/dto";
 
 class UsersRepository {
     async createUser(createUserDTO: CreateUserDTORequest): Promise<UserDTOResponse> {

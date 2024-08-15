@@ -1,5 +1,5 @@
-import prisma from '../../common/config/prismaClient.ts';
-import { Category, GetCatalogQueryDTO } from './dto.ts';
+import prisma from '../../common/config/prismaClient';
+import { Category, GetCatalogQueryDTO } from './dto';
 
 class CatalogRepository {
   async getCatalogByCategory(query: GetCatalogQueryDTO) {

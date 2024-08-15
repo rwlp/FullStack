@@ -1,9 +1,9 @@
 import "express-async-errors";
 import express, { NextFunction, Request, Response } from "express";
 import path from 'path';
-import router from "./router.ts";
-import { middlewareErrors } from "./common/middlewares/middlewareErrors.ts";
-import { middlewareCheckRequestBody } from "./common/middlewares/middlewareCheckRequest.ts";
+import router from "./router";
+import { middlewareErrors } from "./common/middlewares/middlewareErrors";
+import { middlewareCheckRequestBody } from "./common/middlewares/middlewareCheckRequest";
 
 const PORT = 3000; // Needed to put in env var.
 const app = express();

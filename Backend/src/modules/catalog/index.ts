@@ -1,5 +1,5 @@
-export { default as catalogController } from './controller.ts';
-export { default as catalogRepository } from './repository.ts';
-export { default as catalogService } from './service.ts';
-export * from './dto.ts';
-export { default as CatalogRoutes } from './routes.ts';
+export { default as catalogController } from './controller';
+export { default as catalogRepository } from './repository';
+export { default as catalogService } from './service';
+export * from './dto';
+export { default as CatalogRoutes } from './routes';

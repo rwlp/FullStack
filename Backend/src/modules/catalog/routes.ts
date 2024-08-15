@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import catalogController from './controller.ts';
+import catalogController from './controller';
 
 const catalogRouter = Router();
 

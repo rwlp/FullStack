@@ -4,8 +4,8 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "start": "node dist/index.js",
-    "build": "tsc",
+    "start": "node ./dist/server.js",
+    "build": "npm install && cd ../Frontend && npm install && npm run build && npx shx cp -r dist/ ../Backend/staticFiles && cd ../Backend && npx prisma generate && tsc",
     "dev": "nodemon --exec ts-node src/server.ts",
     "lint": "npx eslint \"src/**/*.{ts,js}\" --fix"
   },
@@ -41,6 +41,7 @@
     "nodemon": "^3.1.4",
     "plop": "^4.0.1",
     "prettier": "^3.3.3",
+    "shx": "^0.3.4",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.3"
   }

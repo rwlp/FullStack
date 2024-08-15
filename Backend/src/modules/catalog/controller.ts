@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import { Category, GetCatalogQueryDTO } from './dto.ts';
-import { catalogService } from './index.ts';
-import { responseWrapper } from '../../common/utils/methods.ts';
+import { Category, GetCatalogQueryDTO } from './dto';
+import { catalogService } from './index';
+import { responseWrapper } from '../../common/utils/methods';
 
 class CatalogController {
   async getCatalogByCategory (req: Request, res: Response) {

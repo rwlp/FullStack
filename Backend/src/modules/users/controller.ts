@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import usersService from "./service.ts";
+import usersService from "./service";
 
-import { responseWrapper } from "../../common/utils/methods.ts";
+import { responseWrapper } from "../../common/utils/methods";
 
 class UsersController {
     async createUser(req: Request, res: Response) {

@@ -1,10 +1,10 @@
 import { validate } from "class-validator";
-import { CreateUserDTORequest, UserAuthDTORequest } from "./DTO/RequestDTO.ts";
-import usersRepository from "./repository.ts";
+import { CreateUserDTORequest, UserAuthDTORequest } from "./DTO/RequestDTO";
+import usersRepository from "./repository";
 import bcrypt from 'bcrypt';
-import { UserDTOResponse } from "./DTO/ResponseDTO.ts";
+import { UserDTOResponse } from "./DTO/ResponseDTO";
 import { plainToInstance } from "class-transformer";
-import AppError from "../../common/utils/AppError.ts";
+import AppError from "../../common/utils/AppError";
 
 class UsersService {
     async createUser(createUserDTO: CreateUserDTORequest): Promise<UserDTOResponse> {

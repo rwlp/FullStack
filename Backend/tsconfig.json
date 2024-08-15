@@ -5,13 +5,13 @@
       "strict": true,
       "esModuleInterop": true,
       "skipLibCheck": true,
-      "allowImportingTsExtensions": true,
       "forceConsistentCasingInFileNames": true,
       "strictPropertyInitialization": false,
       "experimentalDecorators": true,
       "emitDecoratorMetadata": true,
-      "noEmit": true,
-      "outDir": "./dist"
+      "noEmit": false,
+      "outDir": "./dist",
+      "rootDir": "./src"
     },
     "include": ["src/**/*"],
     "exclude": ["node_modules"]

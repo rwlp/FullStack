@@ -1,6 +1,6 @@
 import { ParsedQs } from 'qs';
-import { Category, GetCatalogQueryDTO } from './dto.ts';
-import catalogRepository from './repository.ts';
+import { Category, GetCatalogQueryDTO } from './dto';
+import catalogRepository from './repository';
 
 
 class CatalogService {
