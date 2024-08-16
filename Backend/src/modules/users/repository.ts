@@ -23,7 +23,7 @@ class UsersRepository {
             const user: UserAllDataDTO | null = await prisma.user.findUnique({where: {
                 email
             }});
-
+            
             return user; 
 
         } catch (error) {

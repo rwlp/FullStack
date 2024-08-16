@@ -20,8 +20,25 @@ const cssForLogin = css`
 
     &__create-user {
       text-decoration: underline;
-      color: #3390ff;
       cursor: pointer;
+      animation: blink 5s infinite;
+    }
+
+    @keyframes blink {
+      0% {
+        color: blue;
+      }
+      50% {
+        color: white;
+      }
+
+      75% {
+        color: red;
+      }
+
+      100% {
+        color: blue;  
+      }
     }
 
     &__form {

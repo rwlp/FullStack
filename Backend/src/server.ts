@@ -1,5 +1,6 @@
 import "express-async-errors";
 import express, { NextFunction, Request, Response } from "express";
+import cookieParser from 'cookie-parser';
 import path from 'path';
 import router from "./router";
 import { middlewareErrors } from "./common/middlewares/middlewareErrors";
@@ -16,6 +17,7 @@ const corsMiddleware = (req: Request, res: Response, next: NextFunction) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
 
   if (req.method === 'OPTIONS') {
     res.sendStatus(204);
@@ -24,6 +26,7 @@ const corsMiddleware = (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
+app.use(cookieParser());
 app.use(corsMiddleware);
 
 app.use(express.json());

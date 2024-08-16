@@ -82,8 +82,8 @@ function ProductsList({title}: ProductsListProps): React.ReactNode {
       </div>
       </div>
       <div className='list__container' ref={scrollContainerRef}>
-      {productsList.map(product => {
-        return <ProductCard product={product}/>
+      {productsList.map((product, idx) => {
+        return <ProductCard key={idx} product={product}/>
       })}
       </div>
     </StyledProductsList>

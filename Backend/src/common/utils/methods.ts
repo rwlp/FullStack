@@ -15,9 +15,19 @@ export function logError(error: AppError | Error) {
   });
 }
 
-export function responseWrapper(res: Response, message: string, status: number, dataType: string, data: unknown, isCached: boolean = false ) {
+export function responseWrapper(res: Response, message: string, status: number, dataType: string, data: unknown, isCached: boolean = false, cookieData?: string ) {
   if (isCached) {
     res.setHeader('Cache-Control', 'public, max-age=180');
+  }
+
+  if (cookieData) {
+    res.cookie('auth_token', cookieData, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'strict',
+      path: `/api/auth/`,
+      maxAge: 3600000
+    });
   }
   
   res.status(status).json(new ResponseDTO(message, status, dataType, data));

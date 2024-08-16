@@ -14,9 +14,9 @@ class UsersController {
     async authenticateUser(req: Request, res: Response) {
         const { data } = req.body;
 
-        const userData = await usersService.authenticateUser(data);
+        const { userData, jwtTokenForCookie} = await usersService.authenticateUser(data, req.ip!, req.headers['user-agent']!);
 
-        responseWrapper(res, `Hi ${userData.name.split(' ')[0]} :-)`, 200, userData.getClassName(), userData);
+        responseWrapper(res, `Hi ${userData.name.split(' ')[0]} :-)`, 200, userData.getClassName(), userData, false, jwtTokenForCookie);
     }
 }
 

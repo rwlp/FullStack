@@ -1,4 +1,4 @@
-import { validate } from "class-validator";
+import jwt from "jsonwebtoken";
 import { CreateUserDTORequest, UserAuthDTORequest } from "./DTO/RequestDTO";
 import usersRepository from "./repository";
 import bcrypt from 'bcrypt';
@@ -9,7 +9,7 @@ import AppError from "../../common/utils/AppError";
 class UsersService {
     async createUser(createUserDTO: CreateUserDTORequest): Promise<UserDTOResponse> {
         try {
-            const salt = 10; // Need to be in env vars
+            const salt = process.env.SALT_QTD!;
             const hashedPassword = await bcrypt.hash(createUserDTO.password, salt);
             createUserDTO.password = hashedPassword;
             const createdUser = await usersRepository.createUser(createUserDTO);
@@ -20,24 +20,38 @@ class UsersService {
         }
     }
 
-    async authenticateUser(dataToAuth: UserAuthDTORequest): Promise<UserDTOResponse> {
+    async authenticateUser(dataToAuth: UserAuthDTORequest, ip: string, browserAgent: string): Promise<{userData: UserDTOResponse, jwtTokenForCookie: string}> {
         try {
-            const userData = await usersRepository.findUserByEmail(dataToAuth.email);
+          const fullUserData = await usersRepository.findUserByEmail(dataToAuth.email);
 
-            if (!userData) {
-                throw new AppError('Wrong email or password try again ou contact the system manager')
-            }
+          if (!fullUserData) {
+              throw new AppError('Email not found try again!', 404)
+          }
 
-            const compareResult = await bcrypt.compare(dataToAuth.password, userData.password);
+          const compareResult = await bcrypt.compare(dataToAuth.password, fullUserData.password);
 
-            if (compareResult) {
-                return plainToInstance(UserDTOResponse, userData, {excludeExtraneousValues: true})
-            } else {
-                throw new AppError('Wrong email or password try again ou contact the system manager')
-            }
+          if (compareResult) {
+              const tokenForAuth = jwt.sign(
+                {
+                  id: fullUserData?.id,
+                  ip: ip,
+                  agent: browserAgent,
+                },
+                process.env.JWT_SECRET_KEY!,
+                {expiresIn: '1h'}
+              );
+
+              return { 
+                userData: plainToInstance(UserDTOResponse, fullUserData, {excludeExtraneousValues: true}),
+                jwtTokenForCookie: tokenForAuth
+              }
+          } else {
+              throw new AppError('Wrong password try again !', 401)
+          }
+
 
         } catch (error) {
-            throw error;
+          throw error;
         }
     }
 }
