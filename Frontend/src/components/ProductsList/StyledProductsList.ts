@@ -10,7 +10,6 @@ const StyledProductsList = styled.div`
   .list__container {
     display: flex;
     overflow-x: auto;
-    white-space: nowrap;
     scrollbar-width: none; /* Firefox */
   }
 

@@ -1,9 +1,9 @@
-import { CreateUserDTORequest, UserAuthDTORequest } from "../../modules/users";
-import { RequestDTO, ResponseDTO } from "../utils/dto";
+import { CreateUserDTORequest, UserAuthDTORequest } from "../DTOs/userDTOs/userDtosRequests";
+import { RequestDTO, ResponseWrapperDTO } from "../utils/globalTypes";
 
 export const DTOMapping: Record<string, any> = {
   'CreateUserDTO': CreateUserDTORequest,
-  'ResponseDTO': ResponseDTO,
+  'ResponseDTO': ResponseWrapperDTO,
   'RequestDTO': RequestDTO,
-  'UserAuthDTO': UserAuthDTORequest,
+  'UserAuthDTORequest': UserAuthDTORequest,
 }

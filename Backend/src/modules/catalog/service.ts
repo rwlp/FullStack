@@ -1,15 +1,17 @@
 import { ParsedQs } from 'qs';
-import { Category, GetCatalogQueryDTO } from './dto';
-import catalogRepository from './repository';
+import { Category, GetCatalogQueryDTORequest } from '../../common/DTOs/catalogDTOs/catalogDTOsRequests';
+import { catalogRepository } from '../../common/repository/catalogRepository';
+import { plainToInstance } from 'class-transformer';
+import { ProductResponseDTO } from '../../common/utils/globalTypes';
 
 
 class CatalogService {
   async catalogByCategory(query: ParsedQs) {
     const {sort, itemsPerPage, page, category } = query;
-    const queryDto = new GetCatalogQueryDTO(sort as string, itemsPerPage as string, page as string, category as string);
+    const queryDto = new GetCatalogQueryDTORequest(sort as string, itemsPerPage as string, page as string, category as string);
     const products = await catalogRepository.getCatalogByCategory(queryDto);
 
-    return products;
+    return plainToInstance(ProductResponseDTO, products);
   }
 
   async getTotalByCategory(category: Category) {
@@ -17,6 +19,19 @@ class CatalogService {
 
     return total;
   }
+
+  async getHotPrices() {
+    const products = await catalogRepository.getHotPrices();
+    return plainToInstance(ProductResponseDTO, products);
+  }
+
+  async getNewModels() {
+    const product = await catalogRepository.getNewModels();
+
+    return plainToInstance(ProductResponseDTO, product);
+  }
+
+  
 }
 
 export default new CatalogService();

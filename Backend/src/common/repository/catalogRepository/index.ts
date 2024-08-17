@@ -1,0 +1,1 @@
+export {default as catalogRepository} from './catalogRepository';

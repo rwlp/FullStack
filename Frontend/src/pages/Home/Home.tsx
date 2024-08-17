@@ -36,7 +36,7 @@ function Home(): React.ReactNode {
       </div>
 
       <div className='home__brand-new'>
-        <ProductsList title='Brand New Models'/>
+        <ProductsList title='Brand New Models' routeToFetch='hotPrices' />
       </div>
 
       <div className='home__categories'>
@@ -69,7 +69,7 @@ function Home(): React.ReactNode {
       </div>
 
       <div className='home__hot-prices'>
-        <ProductsList title='Hot prices' />
+        <ProductsList title='Hot prices' routeToFetch='getNewsProducts'  />
       </div>
     </StyledHome>
   );

@@ -9,9 +9,6 @@ import { middlewareCheckRequestBody } from "./common/middlewares/middlewareCheck
 const PORT = 3000; // Needed to put in env var.
 const app = express();
 
-
-
-
 // This code turns off cors policy, don't used in Productcion Enviroment!
 const corsMiddleware = (req: Request, res: Response, next: NextFunction) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -28,14 +25,12 @@ const corsMiddleware = (req: Request, res: Response, next: NextFunction) => {
 
 app.use(cookieParser());
 app.use(corsMiddleware);
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, '../staticFiles/dist')));
 
 app.post("", middlewareCheckRequestBody);
-app.use(router);
 
 app.get('*', (req: Request, res: Response, next: NextFunction) => {
   if (req.originalUrl.startsWith('/api')) {
@@ -46,6 +41,7 @@ app.get('*', (req: Request, res: Response, next: NextFunction) => {
   res.sendFile(path.join(__dirname, '../staticFiles/dist', 'index.html'));
 });
 
+app.use(router);
 app.use(middlewareErrors);
 
 app.listen(PORT, () => {

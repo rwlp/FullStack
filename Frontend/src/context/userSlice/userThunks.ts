@@ -23,25 +23,19 @@ export const loginUserThunkerAction = (userDataToLogin: UserAuthDTO): AppThunk =
 
   authUserService(userDataToLogin)
     .then(response => {
+      console.log(response);
       const {data: userData, message} = response;
       dispatch(setUserName(userData.name));
       dispatch(setUserEmail(userData.email));
       dispatch(setMessage(message));
       dispatch(setLoadingStatus('success-login'));
 
-      fetch(`${BASE_URL_API}/auth/users/getUserBasicData`)
-        .then(res => {
-          console.log(res);
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-
     })
     .catch((error) => {
       if( error.response) {
         dispatch(setMessage(error.response.data.message));
       } else {
+        console.log(error);
         dispatch(setMessage('Request Error!, Try Again'));
       }
 
@@ -50,3 +44,10 @@ export const loginUserThunkerAction = (userDataToLogin: UserAuthDTO): AppThunk =
       }, 3000);
     });
 }
+
+export const checkAuthenticationThunkerAction = (): AppThunk => async () => {
+  fetch(`${BASE_URL_API}/auth/users/getUserProfileData`) // testing cookies for authentication
+    .then(() => {
+      
+    });
+};

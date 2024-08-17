@@ -15,15 +15,6 @@ export class AxiosConfigBuilder {
         }
     }
 
-    setAuthToken(token: string): AxiosConfigBuilder {
-        this.config.headers = {
-            ...this.config.headers,
-            'Authorization': `Bearer ${token}`,
-        };
-
-        return this;
-    }
-
     setMethod(method: 'POST' | 'GET') {
         this.config.method = method;
         return this;

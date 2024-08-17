@@ -3,21 +3,23 @@ import StyledProductsList from './StyledProductsList.ts';
 import { Product } from '../../types/types.ts';
 import ProductCard from '../ProductCard/ProductCard.tsx';
 import ButtonArrowPointer from '../ButtonArrowPointer/ButtonArrowPointer.tsx';
+import { BASE_URL_API } from '../../common/constants.ts';
 
 
 interface ProductsListProps {
-  fetchEndPoint?: () => void;
+  routeToFetch: 'hotPrices' | 'getNewsProducts';
   title: string;
 }
 
-function ProductsList({title}: ProductsListProps): React.ReactNode {
-  const [productsList] = useState<Product[] | undefined[]>(Array(20).fill(undefined));
+function ProductsList({title, routeToFetch}: ProductsListProps): React.ReactNode {
+  const [productsList, setProductList] = useState<Product[] | undefined[]>(Array(20).fill(undefined));
 
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const [startX, setStartX] = useState<number>(0);
   const [scrollLeft, setScrollLeft] = useState<number>(0);
   const [isAtStart, setIsAtStart] = useState<boolean>(true);
   const [isAtEnd, setIsAtEnd] = useState<boolean>(false);
+
 
   const checkScrollEdges = () => {
     if (scrollContainerRef.current) {
@@ -71,6 +73,16 @@ function ProductsList({title}: ProductsListProps): React.ReactNode {
       };
     }
   }, [scrollLeft, startX]);
+
+  useEffect(() => {
+    fetch(`${BASE_URL_API}/catalog/${routeToFetch}`)
+      .then(response => {
+        return response.json()
+      })
+      .then(responseServer => {
+        setProductList(responseServer.data);
+      })
+  }, []);
 
   return (
     <StyledProductsList className='list'>

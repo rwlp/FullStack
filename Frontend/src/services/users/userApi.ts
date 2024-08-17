@@ -3,7 +3,7 @@ import { AxiosConfigBuilder } from "../axiosConfigBuilder";
 import axiosInstance from '../../common/config/axiosInstance';
 
 export const createUserApi = async (newUserData: CreateUserDTO): Promise<ResponseDTO<UserDataDTO>> =>  {
-  const configs = new AxiosConfigBuilder('/users/createUser/')
+  const configs = new AxiosConfigBuilder('users/createUser/')
     .setMethod('POST')
     .setBody(newUserData, 'CreateUserDTO')
     .build();
@@ -12,10 +12,13 @@ export const createUserApi = async (newUserData: CreateUserDTO): Promise<Respons
 }
 
 export const authUserApi = async (userDataToAuth: UserAuthDTO ): Promise<ResponseDTO<UserDataDTO>> => {
-  const configs = new AxiosConfigBuilder('/users/authenticateUser')
+  const configs = new AxiosConfigBuilder('users/authenticateUser')
     .setMethod('POST')
     .setBody(userDataToAuth, 'UserAuthDTO')
-    .build()
+    .build();
+
+    console.log(configs);
+
   
   return axiosInstance.request(configs);
 }

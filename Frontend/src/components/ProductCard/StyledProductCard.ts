@@ -29,10 +29,12 @@ const StyledProductCard = styled.div`
   }
 
   .product__name {
+    display: flex;
+    flex-wrap: wrap;
     width: 100%;
     height: 58px;
     ${letterStyleBodyTextDesktoAndTable};
-    color: ${({theme}) => theme.gray}
+    color: ${({theme}) => theme.gray};
   }
 
   .product__price-container {

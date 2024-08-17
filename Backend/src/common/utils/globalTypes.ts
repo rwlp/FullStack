@@ -2,8 +2,10 @@ import { plainToInstance } from "class-transformer";
 import { IsString, Length, validateSync } from "class-validator";
 import { DTOMapping } from "../config/mappingDTOs";
 import AppError from "./AppError";
+import { Request } from "express";
+import { Product } from "@prisma/client";
 
-export class ResponseDTO {
+export class ResponseWrapperDTO {
   message: string;
   status: number;
   dataType: string;
@@ -41,14 +43,30 @@ export class RequestDTO {
   }
 }
 
-export class UserAllDataDTO {
-  id: string;
-  name: string;
-  email: string;
-  password: string;
-  profilePhoto: string;
-  levelProfile: string;
-  totalSpend: number;
-  createdAt: Date;
-  updatedAt: Date;
+export type RequestFromAuthRouter = Request & {userId?: string};
+
+export class ResponseDTO {
+}
+
+export class ProductResponseDTO extends ResponseDTO {
+  id: number
+  codeName: string
+  category: string
+  name: string
+  capacityAvailable: string[]
+  capacity: string
+  priceRegular: number
+  priceDiscount: number
+  colorsAvailable: string[]
+  color: string
+  images: string[]
+  image: string
+  screen: string
+  resolution: string
+  processor: string
+  ram: string
+  camera: string | null 
+  zoom: string | null
+  cell: string[]
+  year: number
 }

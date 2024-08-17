@@ -1,11 +1,11 @@
 import { IsInt, IsString, Length, Max, IsIn, validateSync } from "class-validator";
-import AppError from "../../common/utils/AppError";
+import AppError from "../../utils/AppError";
 import { Prisma } from "@prisma/client";
 import { ParsedQs } from "qs";
 
 export type Category = 'phones' | 'tablets' | 'accessories';
 
-export class GetCatalogQueryDTO {
+export class GetCatalogQueryDTORequest {
   @IsString()
   @Length(1, 10)
   sort: string;

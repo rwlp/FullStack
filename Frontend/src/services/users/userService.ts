@@ -4,7 +4,7 @@ import { authUserApi, createUserApi } from "./userApi";
 
 export const creatUserService = async (newUserData: CreateUserDTO): Promise<ResponseDTO<UserDataDTO>> => {
   return createUserApi(newUserData)
-    .then( data => data );
+    .then( data => data);
 }
 
 export const authUserService = async (userDataToAuth: UserAuthDTO): Promise<ResponseDTO<UserDataDTO>> => {

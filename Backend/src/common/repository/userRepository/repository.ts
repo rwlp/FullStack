@@ -1,11 +1,9 @@
-import { plainToInstance } from "class-transformer";
-import prisma from "../../common/config/prismaClient";
-import { CreateUserDTORequest } from "./DTO/RequestDTO";
-import { UserDTOResponse } from "./DTO/ResponseDTO";
-import { UserAllDataDTO } from "../../common/utils/dto";
+import { CreateUserDTORequest } from "../../DTOs/userDTOs/userDtosRequests";
+import { UserAllDataDTO } from "../../DTOs/userDTOs/userDtosInternal";
+import prisma from "../../config/prismaClient";
 
 class UsersRepository {
-    async createUser(createUserDTO: CreateUserDTORequest): Promise<UserDTOResponse> {
+    async createUser(createUserDTO: CreateUserDTORequest): Promise<UserAllDataDTO> {
         const createdUser = await prisma.user.create({
             data: {
                 ...createUserDTO,
@@ -15,7 +13,7 @@ class UsersRepository {
             }
         });
 
-        return plainToInstance(UserDTOResponse, createdUser, {excludeExtraneousValues: true} );
+        return createdUser;
     }
 
     async findUserByEmail(email: string): Promise<UserAllDataDTO | null> {

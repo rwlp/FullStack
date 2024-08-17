@@ -8,7 +8,7 @@ class UsersController {
         const { data } = req.body;        
         const createdUser = await usersService.createUser(data);
 
-        responseWrapper(res, `Hi ${createdUser.name}! Make login with your email and password!`, 200, createdUser.getClassName(), createdUser);
+        responseWrapper(res, `Hi ${createdUser.name}! Make login with your email and password!`, 200, 'UserDataProfileDTO', createdUser);
     }
 
     async authenticateUser(req: Request, res: Response) {
@@ -16,7 +16,7 @@ class UsersController {
 
         const { userData, jwtTokenForCookie} = await usersService.authenticateUser(data, req.ip!, req.headers['user-agent']!);
 
-        responseWrapper(res, `Hi ${userData.name.split(' ')[0]} :-)`, 200, userData.getClassName(), userData, false, jwtTokenForCookie);
+        responseWrapper(res, `Hi ${userData.name.split(' ')[0]} :-)`, 200, 'UserDataProfileDTO', userData, false, {cookieData: jwtTokenForCookie, cookieName: 'auth_token', path: '/api/auth/'});
     }
 }
 

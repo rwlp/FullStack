@@ -1,26 +1,26 @@
 import jwt from "jsonwebtoken";
-import { CreateUserDTORequest, UserAuthDTORequest } from "./DTO/RequestDTO";
-import usersRepository from "./repository";
 import bcrypt from 'bcrypt';
-import { UserDTOResponse } from "./DTO/ResponseDTO";
 import { plainToInstance } from "class-transformer";
 import AppError from "../../common/utils/AppError";
+import { CreateUserDTORequest, UserAuthDTORequest } from "../../common/DTOs/userDTOs/userDtosRequests";
+import { UserDataProfileDTO } from "../../common/DTOs/userDTOs/userDtosResponse";
+import { usersRepository } from "../../common/repository/userRepository";
 
 class UsersService {
-    async createUser(createUserDTO: CreateUserDTORequest): Promise<UserDTOResponse> {
+    async createUser(createUserDTO: CreateUserDTORequest): Promise<UserDataProfileDTO> {
         try {
             const salt = process.env.SALT_QTD!;
             const hashedPassword = await bcrypt.hash(createUserDTO.password, salt);
             createUserDTO.password = hashedPassword;
             const createdUser = await usersRepository.createUser(createUserDTO);
 
-            return plainToInstance(UserDTOResponse, createdUser);
+            return plainToInstance(UserDataProfileDTO, createdUser, {excludeExtraneousValues: true});
         } catch (error) {
             throw error;
         }
     }
 
-    async authenticateUser(dataToAuth: UserAuthDTORequest, ip: string, browserAgent: string): Promise<{userData: UserDTOResponse, jwtTokenForCookie: string}> {
+    async authenticateUser(dataToAuth: UserAuthDTORequest, ip: string, browserAgent: string): Promise<{userData: UserDataProfileDTO, jwtTokenForCookie: string}> {
         try {
           const fullUserData = await usersRepository.findUserByEmail(dataToAuth.email);
 
@@ -42,14 +42,12 @@ class UsersService {
               );
 
               return { 
-                userData: plainToInstance(UserDTOResponse, fullUserData, {excludeExtraneousValues: true}),
+                userData: plainToInstance(UserDataProfileDTO, fullUserData, {excludeExtraneousValues: true}),
                 jwtTokenForCookie: tokenForAuth
               }
           } else {
               throw new AppError('Wrong password try again !', 401)
           }
-
-
         } catch (error) {
           throw error;
         }

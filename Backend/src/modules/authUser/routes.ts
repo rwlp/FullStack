@@ -3,6 +3,7 @@ import authUserController from './controller';
 
 const authUserRouter = Router();
 
-authUserRouter.get("/getUserBasicData", authUserController.getUserBasicData);
+authUserRouter.get('/getUserProfileData', authUserController.getUserProfileData);
+
 
 export default authUserRouter;

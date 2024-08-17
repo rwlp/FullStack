@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "./styles/GlobalStyles.ts";
@@ -12,9 +12,16 @@ import SideBar from "./components/SideBar/SideBar.tsx";
 import Favorites from "./pages/Favorites/Favorites.tsx";
 import Cart from "./pages/Cart/Cart.tsx";
 import Item from "./pages/Item/Item.tsx";
+import { useAppDispatch } from "./context/hooks.ts";
+import { checkAuthenticationThunkerAction } from "./context/userSlice/userThunks.ts";
 
 function App(): React.ReactNode {
   const [theme] = useState("light");
+  const dispatchRedux = useAppDispatch();
+
+  useEffect(() => {
+    dispatchRedux(checkAuthenticationThunkerAction());
+  }, [])
 
   return (
     <ThemeProvider theme={theme === "dark" ? lightTheme : darkTheme}>

@@ -1,4 +1,3 @@
-import { Expose } from "class-transformer";
 import { IsEmail, IsString, IsStrongPassword, Length, validateSync } from "class-validator";
 import AppError from "../../../common/utils/AppError";
 
@@ -31,8 +30,6 @@ export class CreateUserDTORequest {
         }
     }
 }
-
-
 
 export class UserAuthDTORequest {
     static getClassName() {
