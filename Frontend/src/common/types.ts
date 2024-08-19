@@ -23,6 +23,8 @@ export interface CreateUserDTO {
 export interface UserDataDTO {
   name: string;
   email: string;
+  levelProfile: string;
+  totalSpend: number;
 }
 
 export interface UserAuthDTO {

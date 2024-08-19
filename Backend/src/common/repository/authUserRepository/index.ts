@@ -1,0 +1,1 @@
+export {default as authUserRepository } from './authUserRepository';

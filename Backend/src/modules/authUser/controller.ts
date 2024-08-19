@@ -7,7 +7,9 @@ import { authUserService } from '.';
 class AuthUserController {
   async getUserProfileData(req: Request & RequestFromAuthRouter, res: Response) {
 
-    res.send(req.userId!);
+    const userProfileData = await authUserService.getUserProfileData(req.userId);
+
+    responseWrapper(res, `Hi ${userProfileData.name.split(' ')[0]} :-)`, 200, 'UserProfileDataDTO', userProfileData, false);
   }
 }
 

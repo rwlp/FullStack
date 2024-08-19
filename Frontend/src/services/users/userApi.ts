@@ -22,3 +22,15 @@ export const authUserApi = async (userDataToAuth: UserAuthDTO ): Promise<Respons
   
   return axiosInstance.request(configs);
 }
+
+export const checkUserAuthCookieApi = async (): Promise<ResponseDTO<UserDataDTO>> => {
+  const configs = new AxiosConfigBuilder('auth/users/getUserProfileData').build();
+
+  return axiosInstance.request(configs);
+}
+
+export const logoutUserApi = async (): Promise<ResponseDTO<unknown>> => {
+  const configs = new AxiosConfigBuilder('users/logoutUser').build();
+
+  return axiosInstance.request(configs);
+}

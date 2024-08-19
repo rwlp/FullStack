@@ -57,7 +57,7 @@ function Header(): React.ReactNode {
       <div className="header__right-nav nav-right">
         {isLoginActive && <h4 className="nav-right__user-name">{userMessage}</h4>}
         <ul className="nav-right__list">
-          <li className="nav-right__item nav-right__item--favorites">
+          {isLoginActive && <li className="nav-right__item nav-right__item--favorites">
             <NavLink
               className="nav-right__link"
               to="/favorites"
@@ -66,9 +66,9 @@ function Header(): React.ReactNode {
               {// @ts-ignore
               <HeartIcon fill={colorIcons} /> }
             </NavLink>
-          </li>
+          </li>}
 
-          <li className="nav-right__item nav-right__item--cart">
+          {isLoginActive && <li className="nav-right__item nav-right__item--cart">
             <NavLink
               className="nav-right__link"
               to="/cart"
@@ -77,7 +77,7 @@ function Header(): React.ReactNode {
               {// @ts-ignore
               <BagIcon fill={colorIcons} /> }
             </NavLink>
-          </li>
+          </li>}
 
           <li className="nav-right__item nav-right__item--login">
             <button

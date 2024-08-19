@@ -5,9 +5,12 @@ import path from 'path';
 import router from "./router";
 import { middlewareErrors } from "./common/middlewares/middlewareErrors";
 import { middlewareCheckRequestBody } from "./common/middlewares/middlewareCheckRequest";
+// import dotenv from "dotenv";
 
 const PORT = 3000; // Needed to put in env var.
 const app = express();
+
+// dotenv.config();
 
 // This code turns off cors policy, don't used in Productcion Enviroment!
 const corsMiddleware = (req: Request, res: Response, next: NextFunction) => {

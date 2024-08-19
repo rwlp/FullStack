@@ -7,13 +7,7 @@ export class UserDataProfileDTO extends ResponseDTO {
   
   @Expose()
   email: string;
-
-  @Expose()
-  password: string;
-
-  @Expose()
-  profilePhoto: string;
-
+  
   @Expose()
   levelProfile: string;
 

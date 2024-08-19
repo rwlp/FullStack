@@ -16,9 +16,9 @@ export function logError(error: AppError | Error, req?: Request) {
 }
 
 
-export function responseWrapper(res: Response, message: string, status: number, dataType: string, data: unknown, isCached: boolean = false, setCookie?: {cookieData: string, cookieName: string, path: string} ) {
-  if (!checkTypeForResponses(data)) {
-    throw new AppError('Server Error Response', 500, undefined, true);
+export function responseWrapper(res: Response, message: string, status: number, dataType: string, data?: unknown, isCached: boolean = false, setCookie?: {cookieData: string, cookieName: string, path: string} ) {
+  if (data !== undefined && !checkTypeForResponses(data)) {
+    throw new AppError('Server Error Response In Data Tratment', 500, undefined, true);
   }
 
   if (isCached) {

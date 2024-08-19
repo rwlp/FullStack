@@ -76,10 +76,25 @@ const StyledHome = styled.section`
 
   .card__img {
     width: 100%;
+    transition: transform 500ms ease-in, border-radius 500ms ease-in;
+
+
+    &:hover {
+      transform: scale(1.1);
+      border-radius: 5%;
+    }
   }
 
   .card__info {
     width: 100%;
+  }
+
+  .card__loading-info {
+    width: 100%;
+    height: 100%;
+    background-image: url("loading_img.png");
+    background-size: contain;
+    background-repeat: no-repeat;
   }
 
   .card__title {

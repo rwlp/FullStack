@@ -9,10 +9,13 @@ import LoginIcon from '../../assets/icons/LoginDoor.svg';
 import HomeIcon from '../../assets/icons/Home.svg';
 import Login from './Login.tsx';
 import { ThemeContext } from 'styled-components';
-import { logoutUser } from '../../context/userSlice/userSlice.ts';
+import { logoutUserThunkerAction } from '../../context/userSlice/userThunks.ts';
 
 function SideBar(): React.ReactNode {
   const dispatchRedux = useAppDispatch();
+  const userName = useAppSelector(state => state.user.name);
+  const userLevel = useAppSelector(state => state.user.levelProfile);
+
   const sideBarState = useAppSelector(state => state.pageSettings.sideMenu);
   const isLoginActive = useAppSelector(state => state.user.loadingStatus === "success-login");
   const theme = useContext(ThemeContext)!;
@@ -51,8 +54,8 @@ function SideBar(): React.ReactNode {
             </div>
 
             <div className='info__text'>
-              <span className='info__user-name'>Rafael Wesley</span>
-              <span className='info__level'>Level: Arquimedes</span>
+              <span className='info__user-name'>{userName}</span>
+              <span className='info__level'>Level: {userLevel}</span>
             </div>
           </div>
 
@@ -77,7 +80,7 @@ function SideBar(): React.ReactNode {
           </ul>
           </nav>
 
-          <button className='side-bar__logout' onClick={() => dispatchRedux(logoutUser())}>
+          <button className='side-bar__logout' onClick={() => dispatchRedux(logoutUserThunkerAction())}>
             <LoginIcon />
           </button>
         </>)

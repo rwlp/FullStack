@@ -1,5 +1,5 @@
 import { CreateUserDTO, ResponseDTO, UserAuthDTO, UserDataDTO } from "../../common/types";
-import { authUserApi, createUserApi } from "./userApi";
+import { authUserApi, checkUserAuthCookieApi, createUserApi, logoutUserApi } from "./userApi";
 
 
 export const creatUserService = async (newUserData: CreateUserDTO): Promise<ResponseDTO<UserDataDTO>> => {
@@ -12,3 +12,16 @@ export const authUserService = async (userDataToAuth: UserAuthDTO): Promise<Resp
   return authUserApi(userDataToAuth)
     .then( data => data)
 }
+
+export const checkAuthCookieService = async (): Promise<ResponseDTO<UserDataDTO>> => {
+
+  return checkUserAuthCookieApi()
+    .then(data => data);
+}
+
+export const logoutUserService = async (): Promise<ResponseDTO<unknown>> => {
+
+  return logoutUserApi()
+    .then(data => data);
+}
+

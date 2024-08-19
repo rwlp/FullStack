@@ -13,14 +13,14 @@ import Favorites from "./pages/Favorites/Favorites.tsx";
 import Cart from "./pages/Cart/Cart.tsx";
 import Item from "./pages/Item/Item.tsx";
 import { useAppDispatch } from "./context/hooks.ts";
-import { checkAuthenticationThunkerAction } from "./context/userSlice/userThunks.ts";
+import { checkAuthThunkerAction } from "./context/userSlice/userThunks.ts";
 
 function App(): React.ReactNode {
   const [theme] = useState("light");
   const dispatchRedux = useAppDispatch();
 
   useEffect(() => {
-    dispatchRedux(checkAuthenticationThunkerAction());
+    dispatchRedux(checkAuthThunkerAction());
   }, [])
 
   return (

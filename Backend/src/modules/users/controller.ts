@@ -5,10 +5,12 @@ import { responseWrapper } from "../../common/utils/methods";
 
 class UsersController {
     async createUser(req: Request, res: Response) {
-        const { data } = req.body;        
-        const createdUser = await usersService.createUser(data);
+        const { data } = req.body;
+        await usersService.createUser({...data});
 
-        responseWrapper(res, `Hi ${createdUser.name}! Make login with your email and password!`, 200, 'UserDataProfileDTO', createdUser);
+        const userControler = new UsersController();
+
+        userControler.authenticateUser(req, res);
     }
 
     async authenticateUser(req: Request, res: Response) {
@@ -18,6 +20,20 @@ class UsersController {
 
         responseWrapper(res, `Hi ${userData.name.split(' ')[0]} :-)`, 200, 'UserDataProfileDTO', userData, false, {cookieData: jwtTokenForCookie, cookieName: 'auth_token', path: '/api/auth/'});
     }
+
+    async logoutUser(_req: Request, res: Response) {
+      res.clearCookie('auth_token', {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'strict',
+        path: `/api/auth/`,
+        maxAge: 3600000
+      });
+
+      responseWrapper(res, 'User logout', 200, 'none', undefined); 
+    }
+
+
 }
 
 export default new UsersController();
