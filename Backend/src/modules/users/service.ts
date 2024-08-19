@@ -10,7 +10,7 @@ class UsersService {
     async createUser(createUserDTO: CreateUserDTORequest): Promise<UserDataProfileDTO> {
         try {
             const salt = process.env.SALT_QTD!;
-            const hashedPassword = await bcrypt.hash(createUserDTO.password, salt);
+            const hashedPassword = await bcrypt.hash(createUserDTO.password, parseInt(salt));
             createUserDTO.password = hashedPassword;
             const createdUser = await usersRepository.createUser(createUserDTO);
 
@@ -49,6 +49,8 @@ class UsersService {
               throw new AppError('Wrong password try again !', 401)
           }
         } catch (error) {
+          console.log('eror 1');
+
           throw error;
         }
     }
