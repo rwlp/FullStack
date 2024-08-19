@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
+  "engines": {
+    "node": "18.20.2"
+  },
   "scripts": {
     "build": "npm run build:frontend && npm run build:backend",
     "build:frontend": "cd ../Frontend && npm install && npm run build && npx shx cp -r dist/ ../Backend/staticFiles",
